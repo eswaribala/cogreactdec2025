@@ -1,1 +1,6 @@
-.ShopperHeader {}
+.shopper-header {
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-between;    
+    background-color: #f8f8f8;
+}

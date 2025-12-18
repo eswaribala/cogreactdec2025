@@ -1,14 +1,14 @@
 import { useState } from 'react'
 
 import './App.css'
-import Title from './components/atoms/Title/Title.jsx'
+import ShopperHeader from './components/molecules/ShopperHeader/ShopperHeader.jsx';
 
 function App() {
   
 
   return (
     <>
-      <Title />
+      <ShopperHeader />
     </>
   )
 }

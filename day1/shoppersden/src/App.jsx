@@ -1,13 +1,14 @@
 import { useState } from 'react'
-import Logo from './components/atoms/Logo/Logo.jsx'
+
 import './App.css'
+import Title from './components/atoms/Title/Title.jsx'
 
 function App() {
   
 
   return (
     <>
-      <Logo />
+      <Title />
     </>
   )
 }

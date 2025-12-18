@@ -13,7 +13,10 @@ useEffect(() => {
 
 })
 
-}
+ return(
+    <h4>{currentTime.toLocaleTimeString()}</h4>
+ )
 
+}
 
 export default Timer;

@@ -14,8 +14,10 @@ useEffect(() => {
 })
 
  return(
-    <h4 className='text-xl font-bold text-blue-500'>{currentTime.toLocaleTimeString()}</h4>
-    
+   /*  <h4 className='text-xl font-bold text-indigo-700'>{currentTime.toLocaleTimeString([], {hour12: true})}</h4> */ 
+     <h4 className='text-xl font-bold text-indigo-700'>{currentTime.toLocaleTimeString("en-US",{
+      timeZone: "Asia/Kolkata",
+     })}</h4>   
  )
 
 }

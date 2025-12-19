@@ -14,7 +14,8 @@ useEffect(() => {
 })
 
  return(
-    <h4>{currentTime.toLocaleTimeString()}</h4>
+    <h4 className='text-xl font-bold text-blue-500'>{currentTime.toLocaleTimeString()}</h4>
+    
  )
 
 }

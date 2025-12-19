@@ -7,12 +7,14 @@ function Login() {
 
   const[userName,setUserName]=React.useState("");
   const[password,setPassword]=React.useState("");
-  
+
 
   return (
-    <Box sx={{ width: '100%', height: '100vh', bgcolor: "lightblue", display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+    <Box sx={{ width: '50%', height: '40vh',  display: 'flex', float: 'right', alignItems: 'center' }}>
   
-    <Form>
+    <form>
+      <fieldset className='border-purple-700 border-2 rounded-md p-4'>
+        <legend className='text-xl font-semibold text-purple-700 align-middle'>Login</legend>
        <TextField fullWidth variant='outlined' label="UserName" name="userName" />
         
        
@@ -21,7 +23,8 @@ function Login() {
        <Button variant="contained" color="primary" type="submit">
         Submit
         </Button>
-    </Form>
+        </fieldset>
+    </form>
 
 
     </Box>

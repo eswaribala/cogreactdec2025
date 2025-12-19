@@ -10,17 +10,17 @@ function Login() {
 
 
   return (
-    <Box sx={{ width: '50%', height: '40vh',  display: 'flex', float: 'right', alignItems: 'center' }}>
+    <Box sx={{ width: '50%', height: '50vh',  display: 'flex', float: 'right', alignItems: 'center' }}>
   
     <form>
       <fieldset className='border-purple-700 border-2 rounded-md p-4'>
-        <legend className='text-xl font-semibold text-purple-700 align-middle'>Login</legend>
-       <TextField fullWidth variant='outlined' label="UserName" name="userName" />
+        <legend className='text-xl text-center   font-semibold text-purple-700'>Login</legend>
+       <TextField fullWidth variant='outlined' label="UserName" name="userName" sx={{padding:"10px"}} />
         
        
-       <TextField fullWidth variant='outlined' label="Password" name="password" type="password" />
+       <TextField fullWidth variant='outlined' label="Password" name="password" type="password"  sx={{padding:"10px"}} />
        
-       <Button variant="contained" color="primary" type="submit">
+       <Button variant="contained" color="primary"  type="submit" sx={{margin:"10px"}}>
         Submit
         </Button>
         </fieldset>

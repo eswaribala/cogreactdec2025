@@ -36,7 +36,7 @@ function Login() {
      const jsonDataString =JSON.stringify(jsonData);
       console.log("JSON DATA STRING:",jsonDataString);
       //API CALL
-      /* fetch(api_url,{
+       fetch(api_url,{
         method:"POST",
         headers:{
           "Content-Type":"application/json"
@@ -50,7 +50,7 @@ function Login() {
       .catch((error)=>{
         console.error("Error while calling API:",error);
       })
-        */
+        
     } 
    
   })

@@ -6,6 +6,7 @@ import LockIcon from '@mui/icons-material/Lock';
 import * as Yup from 'yup';
 import { useFormik } from 'formik'; 
 import { Form } from 'formik';
+
 import './Login.css';
 
 function Login() {
@@ -26,6 +27,7 @@ function Login() {
     validationSchema:validationSchema,
     onSubmit:(values)=>{
       console.log("Form data",values);
+      console.log("API URL:",import.meta.env.VITE_API_URL);
     }
    
   })

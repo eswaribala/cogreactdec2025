@@ -53,6 +53,7 @@ function Registration() {
       mobileNo: 0,
 
     },
+    validationSchema: validationSchema,
     onSubmit: values => {
       console.log('Form data', values);
     },

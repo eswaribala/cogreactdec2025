@@ -28,6 +28,28 @@ function Login() {
     onSubmit:(values)=>{
       console.log("Form data",values);
       console.log("API URL:",import.meta.env.VITE_API_URL);
+      const api_url=import.meta.env.VITE_API_URL;
+      const jsonData={
+        userName:values.userName,
+        password:values.password
+      }
+     const jsonDataString =JSON.stringify(jsonData);
+      console.log("JSON DATA STRING:",jsonDataString);
+      //API CALL
+      fetch(api_url,{
+        method:"POST",
+        headers:{
+          "Content-Type":"application/json"
+        },
+        body:jsonDataString
+      })
+      .then((response)=>response.json())
+      .then((data)=>{
+        console.log("Response from API:",data);        
+      })
+      .catch((error)=>{
+        console.error("Error while calling API:",error);
+      })
     }
    
   })

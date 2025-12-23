@@ -74,7 +74,7 @@ function Login({newUserState}) {
   return (
     <div>
       <div>
-      <Box sx={{ width: '40%', height: '5vh', marginRight: '3%', display: 'flex', float: 'right', alignItems: 'center' }}>
+      <Box sx={{ width: '20%', height: '5vh', marginLeft: '65%', display: 'flex',fontSize:'28px', color:'red', alignItems: 'center' }}>
         <a href="#" onClick={handleNewUser} >New User? Register Here</a>
       </Box>
       </div>
@@ -93,7 +93,7 @@ function Login({newUserState}) {
  }
 </div>
     <div>
-    <Box sx={{ width: '40%', height: '50vh', display: 'flex', float: 'right', alignItems: 'center' }}>
+    <Box sx={{ width: '30%', height: '30vh', marginLeft: '65%', display: 'flex',  alignItems: 'center' }}>
    
     <form onSubmit={formik.handleSubmit} style={{width:"100%"}}>
       <fieldset className='border-purple-700 border-2 rounded-md p-4'>

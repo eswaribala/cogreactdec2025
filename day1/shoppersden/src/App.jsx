@@ -15,7 +15,7 @@ function App() {
     content = <Registration newUserState={handleNewUser}/>;
   } else {
     content = <Login newUserState={handleNewUser}/>;
-  } 
+  }  
   return (
     <>
       <ShopperHeader />

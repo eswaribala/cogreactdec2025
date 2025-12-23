@@ -1,6 +1,10 @@
 import React from 'react';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
+import { Box, Button, TextField } from '@mui/material';
+import InputAdornment from '@mui/material/InputAdornment';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import LockIcon from '@mui/icons-material/Lock';  
 import './Registration.css';
 
 function Registration() {
@@ -31,9 +35,8 @@ function Registration() {
       .matches(/[0-9]/, 'Must contain at least one number')
       .matches(/[@$!%*?&]/, 'Must contain at least one special character')
       .required('Required'),
-    dob: Yup.date()
-      .max(new Date(), 'Date of Birth cannot be in the future')
-      .matches(/^\d{4}-\d{2}-\d{2}$/, 'Date of Birth must be in the format YYYY-MM-DD')
+    dob: Yup.date()      
+      
       .required('Required'),
     mobileNo: Yup.number()
       .typeError('Must be a number')
@@ -56,9 +59,12 @@ function Registration() {
     validationSchema: validationSchema,
     onSubmit: values => {
       console.log('Form data', values);
+      newUserState(false);
     },
   });
 
+
+  
 
 }
 

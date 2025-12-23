@@ -5,6 +5,9 @@ import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import LockIcon from '@mui/icons-material/Lock';
 import * as Yup from 'yup';
 import { useFormik } from 'formik'; 
+import Alert from '@mui/material/Alert';
+import CheckIcon from '@mui/icons-material/Check';
+import Snackbar from '@mui/material/Snackbar';
 import { Form } from 'formik';
 
 import './Login.css';
@@ -13,12 +16,17 @@ function Login() {
 
   /* const[userName,setUserName]=React.useState("");
   const[password,setPassword]=React.useState(""); */
+  const[showAlert,setShowAlert]=React.useState(false);
 
   const validationSchema=Yup.object({
     userName:Yup.string().required("UserName is required"),
     password:Yup.string().required("Password is required")
   })
 
+  function handleNewUser(event){
+    event.preventDefault();
+    newUserState(true);
+  }
   const formik=useFormik({
     initialValues:{
       userName:"",
@@ -45,7 +53,9 @@ function Login() {
       })
       .then((response)=>response.json())
       .then((data)=>{
-        console.log("Response from API:",data);        
+        console.log("Response from API:",data); 
+        setShowAlert(true);
+            
       })
       .catch((error)=>{
         console.error("Error while calling API:",error);
@@ -58,15 +68,30 @@ function Login() {
   
 
   return (
+    <div>
+      <div>
+       {showAlert &&
+    <Snackbar
+        open={open}
+        autoHideDuration={1000}   // 1 second
+        onClose={() => setOpen(false)}
+        anchorOrigin={{ vertical: "top", horizontal: "center" }}
+      >
+     <Alert icon={<CheckIcon fontSize="inherit" />} severity="success">
+          "Login Successful!"
+        </Alert>   
+        </Snackbar>
+ }
+</div>
     <Box sx={{ width: '40%', height: '50vh', marginRight: '3%', display: 'flex', float: 'right', alignItems: 'center' }}>
-  
+   
     <form onSubmit={formik.handleSubmit} style={{width:"100%"}}>
       <fieldset className='border-purple-700 border-2 rounded-md p-4'>
         <legend className='text-xl text-center   font-semibold text-purple-700'>Login</legend>
        <TextField fullWidth variant='outlined' label="UserName" 
        name="userName" sx={{padding:"10px"}} values={formik.values.userName}
         onChange={formik.handleChange} 
-         onError={formik.touched.userName && formik.errors.userName && Boolean(formik.errors.userName)}
+          error={formik.touched.userName && Boolean(formik.errors.userName)} 
          helperText={formik.touched.userName &&formik.errors.userName}
         
         slotProps={{
@@ -82,7 +107,7 @@ function Login() {
        
        <TextField fullWidth variant='outlined' label="Password" name="password" type="password"
          sx={{padding:"10px"}} values={formik.values.password} onChange={formik.handleChange} 
-         onError={formik.touched.password && formik.errors.password && Boolean(formik.errors.password)}
+          error={formik.touched.password && Boolean(formik.errors.password)} 
          helperText={formik.touched.password &&formik.errors.password}
          slotProps={{
     input: {
@@ -100,8 +125,9 @@ function Login() {
         </fieldset>
     </form>
 
-
+ 
     </Box>
+    </div>
   )
 }
 

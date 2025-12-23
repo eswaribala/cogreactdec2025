@@ -5,6 +5,9 @@ import { Box, Button, TextField } from '@mui/material';
 import InputAdornment from '@mui/material/InputAdornment';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import LockIcon from '@mui/icons-material/Lock';  
+import EmailIcon from '@mui/icons-material/Email';
+import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
+import PhoneInTalkIcon from '@mui/icons-material/PhoneInTalk';
 import './Registration.css';
 
 function Registration() {
@@ -99,7 +102,7 @@ function Registration() {
     input: {
       startAdornment: (
         <InputAdornment position="start">
-          <LockIcon />
+          <AccountCircleIcon />
         </InputAdornment>
       )
     }
@@ -114,7 +117,7 @@ function Registration() {
     input: {
       startAdornment: (
         <InputAdornment position="start">
-          <LockIcon />
+          <AccountCircleIcon />
         </InputAdornment>
       )
     }
@@ -156,7 +159,7 @@ function Registration() {
     input: {
       startAdornment: (
         <InputAdornment position="start">
-          <LockIcon />
+          <EmailIcon />
         </InputAdornment>
       )
     }
@@ -171,7 +174,7 @@ function Registration() {
     input: {
       startAdornment: (
         <InputAdornment position="start">
-          <LockIcon />
+          <CalendarMonthIcon />
         </InputAdornment>
       )
     }
@@ -185,7 +188,7 @@ function Registration() {
     input: {
       startAdornment: (
         <InputAdornment position="start">
-          <LockIcon />
+          <PhoneInTalkIcon />
         </InputAdornment>
       )
     }

@@ -5,7 +5,7 @@ import './App.css'
 import ShopperHeader from './components/molecules/ShopperHeader/ShopperHeader.jsx';
 
 function App() {
-  /* const [newUser, setNewUser] = useState(false);
+   const [newUser, setNewUser] = useState(false);
 
   function handleNewUser(value){
     setNewUser(value);
@@ -15,11 +15,11 @@ function App() {
     content = <Registration newUserState={handleNewUser}/>;
   } else {
     content = <Login newUserState={handleNewUser}/>;
-  } */
+  } 
   return (
     <>
       <ShopperHeader />
-      <Registration />
+      {content}
     </>
   )
 }

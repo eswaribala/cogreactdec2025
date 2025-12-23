@@ -10,7 +10,7 @@ import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
 import PhoneInTalkIcon from '@mui/icons-material/PhoneInTalk';
 import './Registration.css';
 
-function Registration() {
+function Registration({newUserState}) {
   const validationSchema = Yup.object({
     firstName: Yup.string()
       .min(3, 'Must be at least 3 characters' )
@@ -79,11 +79,12 @@ function Registration() {
       };
       const jsonDataString = JSON.stringify(jsonData);
       console.log('JSON DATA STRING:', jsonDataString);
+      newUserState(false);
     }
   });
   
   return (
-    <Box sx={{ width: '40%', height: '100vh', marginRight: '3%', display: 'flex', float: 'right', alignItems: 'center' }}>
+    <Box sx={{ width: '40%', height: '90vh', marginRight: '3%', display: 'flex', float: 'right', alignItems: 'center' }}>
    
     <form onSubmit={formik.handleSubmit} style={{width:"100%"}}>
       <fieldset className='border-purple-700 border-2 rounded-md p-4'>

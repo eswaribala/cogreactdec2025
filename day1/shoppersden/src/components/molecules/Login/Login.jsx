@@ -12,7 +12,7 @@ import { Form } from 'formik';
 
 import './Login.css';
 
-function Login() {
+function Login({newUserState}) {
 
   /* const[userName,setUserName]=React.useState("");
   const[password,setPassword]=React.useState(""); */
@@ -67,10 +67,17 @@ function Login() {
    
   })
    
-  
+  function handleNewUser(){
+    newUserState(true);
+  }
 
   return (
     <div>
+      <div>
+      <Box sx={{ width: '40%', height: '5vh', marginRight: '3%', display: 'flex', float: 'right', alignItems: 'center' }}>
+        <a href="#" onClick={handleNewUser} >New User? Register Here</a>
+      </Box>
+      </div>
       <div>
        {showAlert &&
     <Snackbar
@@ -85,7 +92,8 @@ function Login() {
         </Snackbar>
  }
 </div>
-    <Box sx={{ width: '40%', height: '50vh', marginRight: '3%', display: 'flex', float: 'right', alignItems: 'center' }}>
+    <div>
+    <Box sx={{ width: '40%', height: '50vh', display: 'flex', float: 'right', alignItems: 'center' }}>
    
     <form onSubmit={formik.handleSubmit} style={{width:"100%"}}>
       <fieldset className='border-purple-700 border-2 rounded-md p-4'>
@@ -129,6 +137,7 @@ function Login() {
 
  
     </Box>
+    </div>
     </div>
   )
 }

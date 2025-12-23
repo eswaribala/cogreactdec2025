@@ -16,7 +16,8 @@ function Login() {
 
   /* const[userName,setUserName]=React.useState("");
   const[password,setPassword]=React.useState(""); */
-  const[showAlert,setShowAlert]=React.useState(false);
+  const[open,setOpen]=React.useState(false);
+  const[showAlert,setShowAlert]=React.useState(true);
 
   const validationSchema=Yup.object({
     userName:Yup.string().required("UserName is required"),
@@ -54,6 +55,7 @@ function Login() {
       .then((response)=>response.json())
       .then((data)=>{
         console.log("Response from API:",data); 
+        setOpen(true);
         setShowAlert(true);
             
       })
@@ -73,7 +75,7 @@ function Login() {
        {showAlert &&
     <Snackbar
         open={open}
-        autoHideDuration={1000}   // 1 second
+        autoHideDuration={2000}   // 2 seconds
         onClose={() => setOpen(false)}
         anchorOrigin={{ vertical: "top", horizontal: "center" }}
       >

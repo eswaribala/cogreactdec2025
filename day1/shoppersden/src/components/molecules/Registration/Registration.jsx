@@ -22,7 +22,7 @@ function Registration() {
       .max(20, 'Must be 20 characters or less')
       .matches(/^[A-Za-z]+$/, 'Only alphabetic characters are allowed')
       .required('Required'),
-    username: Yup.string()
+    userName: Yup.string()
       .min(5, 'Must be at least 5 characters')
       .max(10, 'Must be 10 characters or less')
       .matches(/^[A-Za-z0-9_]+$/, 'Only alphanumeric characters and underscores are allowed')
@@ -56,7 +56,7 @@ function Registration() {
     initialValues: {
       firstName: '',
       lastName: '',
-      username: '',
+      userName: '',
       email: '',
       password: '',
       confirmPassword: '',
@@ -65,10 +65,21 @@ function Registration() {
 
     },
     validationSchema: validationSchema,
-    onSubmit: values => {
-      console.log('Form data', values);
-      newUserState(false);
-    },
+    onSubmit: (values) => {
+      console.log('Form data', values);      
+      
+      const jsonData = {
+        firstName: values.firstName,
+        lastName: values.lastName,
+        userName: values.userName,
+        email: values.email,
+        password: values.password,
+        dob: values.dob,
+        mobileNo: values.mobileNo,
+      };
+      const jsonDataString = JSON.stringify(jsonData);
+      console.log('JSON DATA STRING:', jsonDataString);
+    }
   });
   
   return (

@@ -19,7 +19,7 @@ function App() {
   return (
     <>
       <ShopperHeader />
-      <Login />
+      <Registration />
     </>
   )
 }

@@ -77,9 +77,9 @@ function Login() {
         open={open}
         autoHideDuration={2000}   // 2 seconds
         onClose={() => setOpen(false)}
-        anchorOrigin={{ vertical: "top", horizontal: "center" }}
+        anchorOrigin={{ vertical: "center", horizontal: "center" }}
       >
-     <Alert icon={<CheckIcon fontSize="inherit" />} severity="success">
+     <Alert icon={<CheckIcon fontSize="inherit" />} sx={{width: '100%',margin: '5px',padding: '5px'}} severity="success">
           "Login Successful!"
         </Alert>   
         </Snackbar>

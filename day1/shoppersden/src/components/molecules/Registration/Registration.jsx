@@ -35,8 +35,12 @@ function Registration() {
       .matches(/[0-9]/, 'Must contain at least one number')
       .matches(/[@$!%*?&]/, 'Must contain at least one special character')
       .required('Required'),
+    confirmPassword: Yup.string()
+      .oneOf([Yup.ref('password'), null], 'Passwords must match')
+      .required('Required'),
     dob: Yup.date()      
-      
+      //.max(new Date(), 'Date of Birth cannot be in the future')
+      //.matches(/^\d{4}-\d{2}-\d{2}$/, 'Date of Birth must be in the format YYYY-MM-DD')
       .required('Required'),
     mobileNo: Yup.number()
       .typeError('Must be a number')
@@ -52,6 +56,7 @@ function Registration() {
       username: '',
       email: '',
       password: '',
+      confirmPassword: '',
       dob: '',
       mobileNo: 0,
 
@@ -62,7 +67,140 @@ function Registration() {
       newUserState(false);
     },
   });
+  
+  return (
+    <Box sx={{ width: '40%', height: '100vh', marginRight: '3%', display: 'flex', float: 'right', alignItems: 'center' }}>
+   
+    <form onSubmit={formik.handleSubmit} style={{width:"100%"}}>
+      <fieldset className='border-purple-700 border-2 rounded-md p-4'>
+        <legend className='text-xl text-center   font-semibold text-purple-700'>Registration</legend>
+       <TextField fullWidth variant='outlined' label="FirstName" 
+       name="firstName" sx={{padding:"10px"}} values={formik.values.firstName}
+        onChange={formik.handleChange} 
+          error={formik.touched.firstName && Boolean(formik.errors.firstName)} 
+         helperText={formik.touched.firstName &&formik.errors.firstName}
+        
+        slotProps={{
+    input: {
+      startAdornment: (
+        <InputAdornment position="start">
+         <AccountCircleIcon />
+        </InputAdornment>
+      )
+    }
+      }} />
+        
+       
+       <TextField fullWidth variant='outlined' label="lastName" name="lastName" 
+         sx={{padding:"10px"}} values={formik.values.lastName} onChange={formik.handleChange} 
+          error={formik.touched.lastName && Boolean(formik.errors.lastName)} 
+         helperText={formik.touched.lastName &&formik.errors.lastName}
+         slotProps={{
+    input: {
+      startAdornment: (
+        <InputAdornment position="start">
+          <LockIcon />
+        </InputAdornment>
+      )
+    }
+  }} />
 
+  
+       <TextField fullWidth variant='outlined' label="userName" name="userName" 
+         sx={{padding:"10px"}} values={formik.values.userName} onChange={formik.handleChange} 
+          error={formik.touched.userName && Boolean(formik.errors.userName)} 
+         helperText={formik.touched.userName &&formik.errors.userName}
+         slotProps={{
+    input: {
+      startAdornment: (
+        <InputAdornment position="start">
+          <LockIcon />
+        </InputAdornment>
+      )
+    }
+  }} />
+  
+       <TextField fullWidth variant='outlined' label="password" name="password" type="password"
+         sx={{padding:"10px"}} values={formik.values.password} onChange={formik.handleChange} 
+          error={formik.touched.password && Boolean(formik.errors.password)} 
+         helperText={formik.touched.password &&formik.errors.password}
+         slotProps={{
+    input: {
+      startAdornment: (
+        <InputAdornment position="start">
+          <LockIcon />
+        </InputAdornment>
+      )
+    }
+  }} />
+<TextField fullWidth variant='outlined' label="confirmPassword" name="confirmPassword" type="password"
+         sx={{padding:"10px"}} values={formik.values.confirmPassword} onChange={formik.handleChange} 
+          error={formik.touched.confirmPassword && Boolean(formik.errors.confirmPassword)} 
+         helperText={formik.touched.confirmPassword &&formik.errors.confirmPassword}
+         slotProps={{
+    input: {
+      startAdornment: (
+        <InputAdornment position="start">
+          <LockIcon />
+        </InputAdornment>
+      )
+    }
+  }} />
+
+
+  <TextField fullWidth variant='outlined' label="email" name="email" 
+         sx={{padding:"10px"}} values={formik.values.email} onChange={formik.handleChange} 
+          error={formik.touched.email && Boolean(formik.errors.email)} 
+         helperText={formik.touched.email &&formik.errors.email}
+         slotProps={{
+    input: {
+      startAdornment: (
+        <InputAdornment position="start">
+          <LockIcon />
+        </InputAdornment>
+      )
+    }
+  }} />
+       
+  
+       <TextField fullWidth variant='outlined' label="dob" name="dob" type="date"
+         sx={{padding:"10px"}} values={formik.values.dob} onChange={formik.handleChange} 
+          error={formik.touched.dob && Boolean(formik.errors.dob)} 
+         helperText={formik.touched.dob &&formik.errors.dob}
+         slotProps={{
+    input: {
+      startAdornment: (
+        <InputAdornment position="start">
+          <LockIcon />
+        </InputAdornment>
+      )
+    }
+  }} />
+  
+       <TextField fullWidth variant='outlined' label="mobileNo" name="mobileNo" 
+         sx={{padding:"10px"}} values={formik.values.mobileNo} onChange={formik.handleChange} 
+          error={formik.touched.mobileNo && Boolean(formik.errors.mobileNo)} 
+         helperText={formik.touched.mobileNo &&formik.errors.mobileNo}
+         slotProps={{
+    input: {
+      startAdornment: (
+        <InputAdornment position="start">
+          <LockIcon />
+        </InputAdornment>
+      )
+    }
+  }} />
+  
+       
+       <Button variant="contained" color="primary"  type="submit" sx={{margin:"10px"}}>
+        Submit
+        </Button>
+        </fieldset>
+    </form>
+
+ 
+    </Box>
+  )
 
   
 

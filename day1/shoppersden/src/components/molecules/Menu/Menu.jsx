@@ -21,7 +21,7 @@ function Menu() {
             <Tab label="Home" value="1"></Tab>
             <Tab label="Admin" value="2"></Tab>
             <Tab label="Accounts" value="3"></Tab>
-            <Tab label="Books" value="6"></Tab>
+            <Tab label="FAQ's" value="4"></Tab>
             <Tab label="Help" value="5"></Tab>
           </TabList>
        </Box>
@@ -45,7 +45,9 @@ function Menu() {
           <TabPanel value="3">
             Accounts Content  
           </TabPanel>
-          
+          <TabPanel value="4">
+            FAQ's Content  
+          </TabPanel>
           <TabPanel value="5">
             Help Content  
           </TabPanel>

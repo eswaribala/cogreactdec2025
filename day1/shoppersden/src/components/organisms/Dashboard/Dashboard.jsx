@@ -6,7 +6,6 @@ import './Dashboard.css';
 const Dashboard = () => (
   <div >
     <HorizontalMenu />
-    <VerticalMenu />
   </div>
 );
 

@@ -21,10 +21,18 @@ function HorizontalMenu() {
             <Tab label="Home" value="1"></Tab>
             <Tab label="Admin" value="2"></Tab>
             <Tab label="Accounts" value="3"></Tab>
-            <Tab label="FAQs" value="4"></Tab>
+            <Tab label="Books" value="6"></Tab>
             <Tab label="Help" value="5"></Tab>
           </TabList>
-       
+       </Box>
+       <Box>
+         <TabList orientation="vertical" variant="scrollable" onChange={handleChange} aria-label="Vertical tabs example" sx={{ borderRight: 1, borderColor: 'divider' }}>
+            <Tab label="Books" value="6"></Tab>
+            <Tab label="Gifts" value="7"></Tab>
+            <Tab label="Clothing" value="8"></Tab>
+            <Tab label="Sports" value="9"></Tab>
+          </TabList>
+       </Box>
           <TabPanel value="1">
             Home Content
             
@@ -36,13 +44,25 @@ function HorizontalMenu() {
           <TabPanel value="3">
             Accounts Content  
           </TabPanel>
-          <TabPanel value="4">
-            FAQs Content  
-          </TabPanel>
+          
           <TabPanel value="5">
             Help Content  
           </TabPanel>
-       </Box>
+          <TabPanel value="6">
+                      Books Content
+                      
+                    </TabPanel>
+                    <TabPanel value="7">
+                      Gifts Content
+                      
+                    </TabPanel>
+                    <TabPanel value="8">
+                      Clothing Content  
+                    </TabPanel>
+                    <TabPanel value="9">
+                      Sports Content  
+                    </TabPanel>
+       
       </TabContext>
       </Box>
     

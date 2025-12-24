@@ -11,13 +11,15 @@ import Snackbar from '@mui/material/Snackbar';
 import { Form } from 'formik';
 
 import './Login.css';
+import { useNavigate } from 'react-router-dom';
 
-function Login({newUserState}) {
+function Login({newUserState, isLoggedInState}) {
 
   /* const[userName,setUserName]=React.useState("");
   const[password,setPassword]=React.useState(""); */
   const[open,setOpen]=React.useState(false);
   const[showAlert,setShowAlert]=React.useState(true);
+  const navigate = useNavigate();
 
   const validationSchema=Yup.object({
     userName:Yup.string().required("UserName is required"),
@@ -57,6 +59,8 @@ function Login({newUserState}) {
         console.log("Response from API:",data); 
         setOpen(true);
         setShowAlert(true);
+        isLoggedInState(true);
+        navigate("/dashboard"); //same as history.push api
             
       })
       .catch((error)=>{

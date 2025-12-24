@@ -3,6 +3,7 @@ import Login from './components/molecules/Login/Login.jsx'
 import Registration from './components/molecules/Registration/Registration.jsx'
 import './App.css'
 import ShopperHeader from './components/molecules/ShopperHeader/ShopperHeader.jsx';
+import Dashboard from './components/organisms/Dashboard/Dashboard.jsx';
 import { Route, Routes } from 'react-router-dom';
 
 function App() {
@@ -29,7 +30,7 @@ function App() {
       {
         isLoggedIn && <div>
           <Routes>
-            <Route path="/dashboard" element={<div>Dashboard Component</div>} />
+            <Route path="/dashboard" element={<Dashboard />} />
           </Routes>
         </div>
       }

@@ -78,7 +78,7 @@ function Login({newUserState, isLoggedInState}) {
   return (
     <div>
       <div>
-      <Box sx={{ width: '20%', height: '5vh', marginLeft: '65%', display: 'flex',fontSize:'28px', color:'red', alignItems: 'center' }}>
+      <Box sx={{ width: '40%', height: '20vh', marginLeft: '65%', display: 'flex',fontSize:'28px', color:'red', alignItems: 'center' }}>
         <a href="#" onClick={handleNewUser} >New User? Register Here</a>
       </Box>
       </div>

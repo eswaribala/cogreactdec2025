@@ -3,10 +3,10 @@ import {useState} from 'react';
 import Tab from '@mui/material/Tab';
 import { TabContext, TabList, TabPanel } from '@mui/lab';
 import Grid from '@mui/material/Grid';
-import './HorizontalMenu.css';
+import './Menu.css';
 import { Box } from '@mui/material';
 
-function HorizontalMenu() {
+function Menu() {
   const[value, setValue] = useState('1');
 
   function handleChange(event, newValue){
@@ -14,9 +14,9 @@ function HorizontalMenu() {
   }
 
   return(
-    <Box sx={{ width: '100%', height: '10vh', marginTop: '0px',marginLeft:'240px' }}>
+    <Box sx={{ width: '100%', height: '10vh', marginTop: '0px',marginLeft:'20px' }}>
       <TabContext value={value}>
-        <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
+        <Box sx={{ borderBottom: 1, borderColor: 'divider',marginLeft:'100px'}}>
           <TabList orientation="horizontal" variant="scrollable" onChange={handleChange} aria-label="Horizontal tabs example" sx={{ borderBottom: 1, borderColor: 'divider' }}>
             <Tab label="Home" value="1"></Tab>
             <Tab label="Admin" value="2"></Tab>
@@ -25,7 +25,7 @@ function HorizontalMenu() {
             <Tab label="Help" value="5"></Tab>
           </TabList>
        </Box>
-       <Box>
+       <Box sx={{ borderRight: 1, borderColor: 'divider', position:'absolute', top:'10vh', left:'0', height:'90vh',marginTop:'100px' }}>
          <TabList orientation="vertical" variant="scrollable" onChange={handleChange} aria-label="Vertical tabs example" sx={{ borderRight: 1, borderColor: 'divider' }}>
             <Tab label="Books" value="6"></Tab>
             <Tab label="Gifts" value="7"></Tab>
@@ -33,6 +33,7 @@ function HorizontalMenu() {
             <Tab label="Sports" value="9"></Tab>
           </TabList>
        </Box>
+       <Box sx={{ marginLeft: '150px', padding: '20px', marginTop: '20px',marginLeft:'240px' }}>
           <TabPanel value="1">
             Home Content
             
@@ -62,7 +63,7 @@ function HorizontalMenu() {
                     <TabPanel value="9">
                       Sports Content  
                     </TabPanel>
-       
+        </Box>
       </TabContext>
       </Box>
     
@@ -71,4 +72,4 @@ function HorizontalMenu() {
 
 
 
-export default HorizontalMenu;
+export default Menu;

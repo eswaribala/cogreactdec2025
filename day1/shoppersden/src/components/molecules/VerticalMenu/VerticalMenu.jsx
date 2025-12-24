@@ -14,7 +14,7 @@ function VerticalMenu() {
   }
 
   return(
-    <Grid container spacing={2}>
+    <Grid container spacing={2} sx={{width:'100%', height:'100vh', marginTop:'100px'}}>
       <TabContext value={value}>
         <Grid>
           <TabList orientation="vertical" variant="scrollable" onChange={handleChange} aria-label="Vertical tabs example" sx={{ borderRight: 1, borderColor: 'divider' }}>
@@ -24,7 +24,7 @@ function VerticalMenu() {
             <Tab label="Sports" value="4"></Tab>
           </TabList>
         </Grid>
-        <Grid>
+        <Grid size={10} sx={{marginLeft:'40px'}}>
           <TabPanel value="1">
             Books Content
             

@@ -11,7 +11,12 @@ function Gifts(){
   const[error, setError] = React.useState(null);
   const api_url=import.meta.env.VITE_GIFT_ENDPOINT;
   const [page, setPage] = React.useState(1);
-  const itemsPerPage = 10;
+  let slicedItems=0;
+  let pageCount=0;
+  let startIndex=0;
+  let endIndex=0;
+
+  const itemsPerPage = 5;
 
   React.useEffect(() => {
     fetch(api_url)
@@ -35,6 +40,12 @@ function Gifts(){
   if (error) {
     return <div>Error loading gifts: {error.message}</div>;
   }
+  if (gifts.length > 0) {
+    pageCount = Math.ceil(gifts.length / itemsPerPage);
+    startIndex = (page - 1) * itemsPerPage;
+     endIndex = startIndex + itemsPerPage;
+    slicedItems = gifts.slice(startIndex, endIndex);
+  }
   return(
     <div className="gifts-container">
       <Grid container spacing={3}>
@@ -43,7 +54,7 @@ function Gifts(){
             <Typography variant="h6">No gifts available.</Typography>
           </Grid>
         ) : (
-          gifts.map((gift) => (
+          slicedItems.map((gift) => (
             <Grid item xs={12} sm={6} md={4} lg={3} key={gift.id}>
               <Card className="gift-card">
                 <CardMedia

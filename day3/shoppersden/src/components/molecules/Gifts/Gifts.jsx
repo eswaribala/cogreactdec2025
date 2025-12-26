@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, CardContent, CardMedia, Typography, Grid, CardActions, Button } from '@mui/material';
+import { Card, CardContent, CardMedia, Typography, Grid, CardActions, Button,Pagination,Stack } from '@mui/material';
 import './Gifts.css';
 
 
@@ -10,15 +10,17 @@ function Gifts(){
   const[loading, setLoading] = React.useState(true);
   const[error, setError] = React.useState(null);
   const api_url=import.meta.env.VITE_GIFT_ENDPOINT;
+  const [page, setPage] = React.useState(1);
+  const itemsPerPage = 10;
 
   React.useEffect(() => {
     fetch(api_url)
       .then(response => response.json())
       .then(data => {
         setGifts(Array.isArray(data.data) ? data.data : []);
-
         console.log("Gifts data fetched:", data);
         setLoading(false);
+
       })
       .catch(error => {
         console.error('Error fetching gifts:', error)
@@ -71,6 +73,14 @@ function Gifts(){
           ))
         )}
       </Grid>
+      <Stack spacing={2} sx={{ marginTop: '20px', alignItems: 'center' }}>
+        <Pagination 
+          count={Math.ceil(gifts.length / itemsPerPage)} 
+          page={page} 
+          onChange={(event, value) => setPage(value)} 
+          color="primary" 
+        />
+      </Stack>
     </div>
   );
 }

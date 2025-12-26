@@ -40,7 +40,7 @@ function App() {
         isLoggedIn && <div>
           <Routes>
             <Route path="/" element={<Login />} />
-            <Route path="/dashboard" element={<Dashboard />} >
+            <Route path="dashboard" element={<Dashboard />} >
              <Route path="accounts" element={<Accounts />} />
              <Route path="admin" element={<Admin />} />
              <Route path="books" element={<Books />} />

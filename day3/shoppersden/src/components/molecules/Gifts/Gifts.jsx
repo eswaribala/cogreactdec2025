@@ -47,7 +47,7 @@ function Gifts(){
                 <CardMedia
                   component="img"
                   height="200"
-                  image={gift.imageUrl}
+                  image={gift.image}
                   alt={gift.name}
                 />
                 <CardContent>

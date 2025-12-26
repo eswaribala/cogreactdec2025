@@ -32,7 +32,7 @@ export default function DashboardTabs() {
     const path = location.pathname;
     console.log("Current Path:", path);
 
-    if (topRoutes[path]) {
+   /*  if (topRoutes[path]) {
       setTopValue(topRoutes[path]);
       console.log("Top Tab Value Set To:", topRoutes[path]);
     }
@@ -40,7 +40,7 @@ export default function DashboardTabs() {
     if (leftRoutes[path]) {
       setLeftValue(leftRoutes[path]);
       console.log("Left Tab Value Set To:", leftRoutes[path]);
-    }
+    } */
   }, [location.pathname]);
 
   const handleTopChange = (e, newValue) => {
@@ -67,7 +67,7 @@ export default function DashboardTabs() {
       "9": "sports",
     };
 
-    navigate(tabToRoute[newValue]);
+   navigate(tabToRoute[newValue]);
   };
 
   return (
@@ -110,6 +110,7 @@ export default function DashboardTabs() {
         <Box sx={{ flex: 1, p: 2 ,marginLeft:'20px' }}>
           <Outlet />
         </Box>
+        
       </Box>
     </Box>
   );

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, CardContent, CardMedia, Typography, Grid, CardActions, Box,Button,TextField,Pagination,Stack } from '@mui/material';
+import { Card, CardContent, CardMedia, Typography, Grid, CardActions, Box,Button,TextField,Pagination,Stack, FormControl, Select, MenuItem } from '@mui/material';
 import './Gifts.css';
 import axios from 'axios';
 
@@ -12,6 +12,7 @@ function Gifts(){
   const api_url=import.meta.env.VITE_GIFT_ENDPOINT;
   const [page, setPage] = React.useState(1);
   const [searchTerm, setSearchTerm] = React.useState('');
+  const [sortBy, setSortBy] = React.useState('nameAsc'); // 'price-asc' or 'price-desc'
   let slicedItems=0;
   let pageCount=0;
   let startIndex=0;
@@ -63,13 +64,22 @@ function Gifts(){
     return name.includes(searchTerm.toLowerCase()) || desc.includes(searchTerm.toLowerCase());
   });
 
+  // Sorting
+  const sortedGifts = filteredGifts.sort((a, b) => {
+    if (sortBy === 'nameAsc') {
+      return a.name.localeCompare(b.name);
+    } else if (sortBy === 'nameDesc') {
+      return b.name.localeCompare(a.name);
+    } 
+    return 0;
+  });
   if (gifts.length > 0) {
-    pageCount = Math.ceil(filteredGifts.length / itemsPerPage);
+    pageCount = Math.ceil(sortedGifts.length / itemsPerPage);
     startIndex = (page - 1) * itemsPerPage;
     console.log("Start Index:", startIndex);
      endIndex = startIndex + itemsPerPage;
       console.log("End Index:", endIndex);
-    slicedItems = filteredGifts.slice(startIndex, endIndex);
+    slicedItems = sortedGifts.slice(startIndex, endIndex);
   }
   return(
     <div className="gifts-container">
@@ -83,6 +93,13 @@ function Gifts(){
           value={searchTerm}
           onChange={handleSearch}
         />
+        <FormControl sx={{ marginLeft: '20px', minWidth: 200 }}>
+          <Select value={sortBy} displayEmpty onChange={(e) => setSortBy(e.target.value)}>
+            <MenuItem value="nameAsc">Name: A to Z</MenuItem>
+            <MenuItem value="nameDesc">Name: Z to A</MenuItem>
+            
+          </Select>
+        </FormControl>
      </Box>
 
       <Grid container spacing={3}>

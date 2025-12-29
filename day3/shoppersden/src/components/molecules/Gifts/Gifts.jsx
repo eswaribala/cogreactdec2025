@@ -58,6 +58,10 @@ function Gifts(){
     setSearchTerm(event.target.value);
     setPage(1); // Reset to first page on new search
   }
+  function handleSortChange(event) {
+    setSortBy(event.target.value);
+    setPage(1); // Reset to first page on new sort
+  }
   const filteredGifts = gifts.filter(gift => {
     const name = (gift.name ?? '').toString().toLowerCase();
     const desc = (gift.description ?? '').toString().toLowerCase();
@@ -94,7 +98,7 @@ function Gifts(){
           onChange={handleSearch}
         />
         <FormControl sx={{ marginLeft: '20px', minWidth: 200 }}>
-          <Select value={sortBy} displayEmpty onChange={(e) => setSortBy(e.target.value)}>
+          <Select value={sortBy} displayEmpty onChange={handleSortChange}>
             <MenuItem value="nameAsc">Name: A to Z</MenuItem>
             <MenuItem value="nameDesc">Name: Z to A</MenuItem>
             

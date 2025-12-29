@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, CardContent, CardMedia, Typography, Grid, CardActions, Button,Pagination,Stack } from '@mui/material';
+import { Card, CardContent, CardMedia, Typography, Grid, CardActions, Box,Button,TextField,Pagination,Stack } from '@mui/material';
 import './Gifts.css';
 
 
@@ -11,6 +11,7 @@ function Gifts(){
   const[error, setError] = React.useState(null);
   const api_url=import.meta.env.VITE_GIFT_ENDPOINT;
   const [page, setPage] = React.useState(1);
+  const [searchTerm, setSearchTerm] = React.useState('');
   let slicedItems=0;
   let pageCount=0;
   let startIndex=0;
@@ -40,14 +41,33 @@ function Gifts(){
   if (error) {
     return <div>Error loading gifts: {error.message}</div>;
   }
+
+  const filteredGifts = gifts.filter(gift => {
+    const name = (gift.name ?? '').toString().toLowerCase();
+    const desc = (gift.description ?? '').toString().toLowerCase();
+    return name.includes(searchTerm.toLowerCase()) || desc.includes(searchTerm.toLowerCase());
+  });
+
   if (gifts.length > 0) {
-    pageCount = Math.ceil(gifts.length / itemsPerPage);
+    pageCount = Math.ceil(filteredGifts.length / itemsPerPage);
     startIndex = (page - 1) * itemsPerPage;
+    console.log("Start Index:", startIndex);
      endIndex = startIndex + itemsPerPage;
-    slicedItems = gifts.slice(startIndex, endIndex);
+      console.log("End Index:", endIndex);
+    slicedItems = filteredGifts.slice(startIndex, endIndex);
   }
   return(
     <div className="gifts-container">
+     <Box>
+        <TextField
+          label="Search Gifts"
+          variant="outlined"
+          
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+        />
+     </Box>
+
       <Grid container spacing={3}>
         {gifts.length === 0 ? (
           <Grid item xs={12}>

@@ -62,14 +62,16 @@ function Gifts(){
         <TextField
           label="Search Gifts"
           variant="outlined"
-          
+          padding="10px"
+          margin="normal"
+         
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
         />
      </Box>
 
       <Grid container spacing={3}>
-        {gifts.length === 0 ? (
+        {filteredGifts.length === 0 ? (
           <Grid item xs={12}>
             <Typography variant="h6">No gifts available.</Typography>
           </Grid>

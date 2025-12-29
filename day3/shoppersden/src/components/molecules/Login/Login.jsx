@@ -60,7 +60,7 @@ function Login({newUserState, isLoggedInState}) {
         setOpen(true);
         setShowAlert(true);
         isLoggedInState(true);
-        navigate("/dashboard"); //same as history.push api
+        navigate("/dashboard/home"); //same as history.push api
             
       })
       .catch((error)=>{

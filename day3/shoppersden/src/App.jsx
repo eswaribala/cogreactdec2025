@@ -14,6 +14,7 @@ import FAQ from './components/molecules/FAQ/FAQ.jsx';
 import Help from './components/molecules/Help/Help.jsx';
 import Home from './components/molecules/Home/Home.jsx';
 import Sports from './components/molecules/Sports/Sports.jsx';
+import Footer from './components/molecules/Footer/Footer.jsx';
 
 function App() {
    const [newUser, setNewUser] = useState(false);
@@ -36,6 +37,7 @@ function App() {
     <>
       <ShopperHeader />
       {content}
+      <Footer />
       {
         isLoggedIn && <div>
           <Routes>

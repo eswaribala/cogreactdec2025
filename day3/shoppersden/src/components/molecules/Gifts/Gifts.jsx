@@ -42,6 +42,10 @@ function Gifts(){
     return <div>Error loading gifts: {error.message}</div>;
   }
 
+  function handleSearch(event) {
+    setSearchTerm(event.target.value);
+    setPage(1); // Reset to first page on new search
+  }
   const filteredGifts = gifts.filter(gift => {
     const name = (gift.name ?? '').toString().toLowerCase();
     const desc = (gift.description ?? '').toString().toLowerCase();
@@ -66,7 +70,7 @@ function Gifts(){
           margin="normal"
          
           value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
+          onChange={handleSearch}
         />
      </Box>
 

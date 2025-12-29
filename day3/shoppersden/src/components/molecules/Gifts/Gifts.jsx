@@ -1,7 +1,7 @@
 import React from 'react';
 import { Card, CardContent, CardMedia, Typography, Grid, CardActions, Box,Button,TextField,Pagination,Stack } from '@mui/material';
 import './Gifts.css';
-
+import axios from 'axios';
 
 
 function Gifts(){
@@ -20,7 +20,17 @@ function Gifts(){
   const itemsPerPage = 5;
 
   React.useEffect(() => {
-    fetch(api_url)
+    axios.get(api_url).then(response => { 
+      setGifts(Array.isArray(response.data.data) ? response.data.data : []);
+        console.log("Gifts data fetched:", response.data);
+        setLoading(false);
+    }).catch(error => {
+      console.error('Error fetching gifts with axios:', error);
+      setError(error);
+      setLoading(false);
+    });
+
+    /* fetch(api_url)
       .then(response => response.json())
       .then(data => {
         setGifts(Array.isArray(data.data) ? data.data : []);
@@ -31,8 +41,9 @@ function Gifts(){
       .catch(error => {
         console.error('Error fetching gifts:', error)
         setError(error);
-        setLoading(false);
+        setLoading(false); 
   });
+  */
   }, []);
   if (loading) {
     return <div>Loading gifts...</div>;
@@ -110,7 +121,7 @@ function Gifts(){
           ))
         )}
       </Grid>
-      <Stack spacing={2} sx={{ marginTop: '20px', alignItems: 'center' }}>
+      <Stack spacing={2} sx={{ marginTop: '10px', marginBottom: '10px', alignItems: 'center' }}>
         <Pagination 
           count={Math.ceil(filteredGifts.length / itemsPerPage)} 
           page={page} 

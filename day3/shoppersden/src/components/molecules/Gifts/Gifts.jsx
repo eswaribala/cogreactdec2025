@@ -106,7 +106,7 @@ function Gifts(){
       </Grid>
       <Stack spacing={2} sx={{ marginTop: '20px', alignItems: 'center' }}>
         <Pagination 
-          count={Math.ceil(gifts.length / itemsPerPage)} 
+          count={Math.ceil(filteredGifts.length / itemsPerPage)} 
           page={page} 
           onChange={(event, value) => setPage(value)} 
           color="primary" 

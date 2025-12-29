@@ -87,17 +87,17 @@ function Gifts(){
   }
   return(
     <div className="gifts-container">
-     <Box>
+     <Box sx={{ display: 'flex', alignItems: 'center', marginBottom: '20px',padding: "10px" }}>
         <TextField
           label="Search Gifts"
           variant="outlined"
-          padding="10px"
+          
           margin="normal"
          
           value={searchTerm}
           onChange={handleSearch}
         />
-        <FormControl sx={{ marginLeft: '20px', minWidth: 200 }}>
+        <FormControl sx={{ marginLeft: '20px', minWidth: 200}} >
           <Select value={sortBy} displayEmpty onChange={handleSortChange}>
             <MenuItem value="nameAsc">Name: A to Z</MenuItem>
             <MenuItem value="nameDesc">Name: Z to A</MenuItem>

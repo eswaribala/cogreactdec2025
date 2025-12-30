@@ -15,6 +15,7 @@ import Help from './components/molecules/Help/Help.jsx';
 import Home from './components/molecules/Home/Home.jsx';
 import Sports from './components/molecules/Sports/Sports.jsx';
 import Footer from './components/molecules/Footer/Footer.jsx';
+import { Box } from '@mui/material';
 
 function App() {
    const [newUser, setNewUser] = useState(false);
@@ -34,12 +35,22 @@ function App() {
     content = <Login newUserState={handleNewUser} isLoggedInState={handleIsLoggedIn} />;
   }  
   return (
-    <>
+    <div className="app-layout">
       <ShopperHeader />
       {content}
-      <Footer />
+      <Box
+  sx={{
+    minHeight: "5vh",
+    display: "flex",
+    flexDirection: "column",
+    bgcolor: "background.paper",
+    pb: "20px", // ✅ reserves space for fixed footer
+  }}
+>
+        <Footer />
+      </Box>
       {
-        isLoggedIn && <div>
+        isLoggedIn && <div className="app-content">
           <Routes>
             <Route path="/" element={<Login />} />
             <Route path="/dashboard" element={<Dashboard />} >
@@ -54,9 +65,10 @@ function App() {
              <Route path="sports" element={<Sports />} />
             </Route>
           </Routes>
+       
         </div>
       }
-    </>
+    </div>
   )
 }
 

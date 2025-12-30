@@ -2,7 +2,7 @@ import { TabContext, TabList } from "@mui/lab";
 import { Box, Tab } from "@mui/material";
 import { Outlet, useLocation, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
-
+import Footer from "../Footer/Footer.jsx";
 export default function DashboardTabs() {
   const navigate = useNavigate();
   const location = useLocation();
@@ -32,15 +32,19 @@ export default function DashboardTabs() {
     const path = location.pathname;
     console.log("Current Path:", path);
 
-   /*  if (topRoutes[path]) {
+    if (topRoutes[path]) {
       setTopValue(topRoutes[path]);
       console.log("Top Tab Value Set To:", topRoutes[path]);
+        setLeftValue(false); // ✅ nothing selected on left
+      return;
     }
 
     if (leftRoutes[path]) {
       setLeftValue(leftRoutes[path]);
       console.log("Left Tab Value Set To:", leftRoutes[path]);
-    } */
+      setTopValue(false); // ✅ nothing selected on top
+      return;
+    } 
   }, [location.pathname]);
 
   const handleTopChange = (e, newValue) => {
@@ -71,10 +75,17 @@ export default function DashboardTabs() {
   };
 
   return (
-    <Box sx={{ width: "100%", height: "100vh", bgcolor: "background.paper" ,marginTop:'20px'}}>
+    
+    <Box  sx={{
+    minHeight: "80vh",
+    display: "flex",
+    flexDirection: "column",
+    bgcolor: "background.paper"
+   
+  }}>
       {/* ✅ TOP TAB CONTEXT */}
       <TabContext value={topValue}>
-        <Box sx={{ borderBottom: 1, borderColor: "divider",marginLeft:'200px' }}>
+        <Box sx={{ borderBottom: 1, borderColor: "divider", ml: "200px" }}>
           <TabList
             orientation="horizontal"
             variant="scrollable"
@@ -107,11 +118,12 @@ export default function DashboardTabs() {
         </TabContext>
 
         {/* ✅ ROUTE CONTENT */}
-        <Box sx={{ flex: 1, p: 2 ,marginLeft:'20px' }}>
+        <Box sx={{ flex: 1, p: 2, ml: "20px", overflowY: "auto" }}>
           <Outlet />
         </Box>
         
       </Box>
+     
     </Box>
   );
 }

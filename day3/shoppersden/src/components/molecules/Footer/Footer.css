@@ -1,8 +1,11 @@
-.Footer {
-    background-color: #0d6efd;
-    text-align: center;
-    padding: 10px;
-    position: fixed;
-    bottom: 0;
-    width: 100%;
+.Footer{
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 30px;
+  z-index: 1300;
+  text-align: center;
+  background-color: cornflowerblue;
+  
 }

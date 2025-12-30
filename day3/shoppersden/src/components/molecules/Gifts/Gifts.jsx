@@ -97,7 +97,7 @@ function Gifts(){
           value={searchTerm}
           onChange={handleSearch}
         />
-        <FormControl sx={{ marginLeft: '20px', minWidth: 200}} >
+        <FormControl sx={{ marginLeft: '20px', minWidth: 200,padding:"10px" }} >
           <Select value={sortBy} displayEmpty onChange={handleSortChange}>
             <MenuItem value="nameAsc">Name: A to Z</MenuItem>
             <MenuItem value="nameDesc">Name: Z to A</MenuItem>

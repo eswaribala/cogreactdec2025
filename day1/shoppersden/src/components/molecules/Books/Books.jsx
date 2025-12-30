@@ -18,8 +18,14 @@ import {
 import MenuBookIcon from "@mui/icons-material/MenuBook";
 import StarIcon from "@mui/icons-material/Star";
 import CurrencyRupeeIcon from "@mui/icons-material/CurrencyRupee";
-
-
+import { useNavigate } from "react-router-dom";
+import Dialog from "@mui/material/Dialog";
+import DialogTitle from "@mui/material/DialogTitle";
+import DialogContent from "@mui/material/DialogContent";
+import DialogActions from "@mui/material/DialogActions";
+import Button from "@mui/material/Button";
+import BookDetails from "../BookDetails/BookDetails.jsx";
+import { useParams } from "react-router-dom";
 
 export default function Books() {
   const [items, setItems] = React.useState([]);
@@ -31,7 +37,9 @@ export default function Books() {
 
   const [loading, setLoading] = React.useState(false);
   const [error, setError] = React.useState("");
-
+  const navigate = useNavigate();
+   const { bookId } = useParams()
+      const open = Boolean(bookId); 
   const fetchBooks = React.useCallback(async () => {
     try {
       setLoading(true);
@@ -47,7 +55,7 @@ export default function Books() {
       setItems(data.items || []);
       setTotalPages(data.totalPages || 1);
       setTotalItems(data.totalItems || 0);
-
+     
       // If backend clamps page, sync UI
       if (data.page && data.page !== page) setPage(data.page);
     } catch (e) {
@@ -64,6 +72,17 @@ export default function Books() {
   const handlePageChange = (event, value) => {
     setPage(value); // MUI Pagination is 1-based
   };
+  const handleOpenDetails = (book) => {
+    // Open book details popup + update route param
+    navigate(`/dashboard/books/${book.id}`);
+  }
+
+  function handleClose() {
+    // Close book details popup + reset route param
+    navigate(`/dashboard/books/`, { replace: true });
+  }
+
+  
 
   return (
     <Box sx={{ p: 2 }}>
@@ -96,12 +115,16 @@ export default function Books() {
               <React.Fragment key={b.id}>
                 <ListItem alignItems="flex-start" sx={{ py: 1.5 }}>
                   <ListItemAvatar>
-                    <Avatar>
+                    <Avatar  sx={{ cursor: "pointer", bgcolor: "primary.main" }} onClick={(e) => {
+        e.stopPropagation();      // 🔴 important
+        handleOpenDetails(b);  // opens popup + route param
+      }}>
                       <MenuBookIcon />
                     </Avatar>
                   </ListItemAvatar>
 
                   <ListItemText
+                   disableTypography  
                     primary={
                       <Box sx={{ display: "flex", alignItems: "center", gap: 1, flexWrap: "wrap" }}>
                         <Typography variant="subtitle1" fontWeight={700}>
@@ -161,6 +184,23 @@ export default function Books() {
           />
         </Stack>
       </Paper>
+       {/* ✅ DIALOG */}
+      <Dialog
+        open={open}
+        onClose={handleClose}
+        fullWidth
+        maxWidth="sm"
+      >
+        <DialogTitle>Book Details</DialogTitle>
+
+        <DialogContent dividers>
+          {open && <BookDetails />}
+        </DialogContent>
+
+        <DialogActions>
+          <Button onClick={handleClose}>Close</Button>
+        </DialogActions>
+      </Dialog>
     </Box>
   );
 }

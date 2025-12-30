@@ -90,6 +90,15 @@ app.get("/api/books", (req, res) => {
     items
   });
 });
+app.get("/api/books/:id", (req, res) => {
+  const id = parseInt(req.params.id, 10);
+  const book = books.find((b) => b.id === id);  
+  if (book) {
+    res.json(book);
+  } else {
+    res.status(404).json({ error: "Book not found" });
+  }
+});
 app.listen(PORT, () => {
     console.log(`Server is running on http://localhost:${PORT}`);
 });

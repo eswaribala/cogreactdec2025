@@ -17,6 +17,8 @@ import Sports from './components/molecules/Sports/Sports.jsx';
 import Footer from './components/molecules/Footer/Footer.jsx';
 import { Box } from '@mui/material';
 import Page404 from './components/molecules/Page404/Page404.jsx';
+import ProtectedRoute from './components/molecules/ProtectedRoute/ProtectedRoute.jsx';
+
 
 function App() {
    const [newUser, setNewUser] = useState(false);
@@ -54,7 +56,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Navigate to={isLoggedIn ? "/dashboard/home" : "/login"} />} />
             <Route path="/login" element={newUser?<Registration newUserState={setNewUser} />:<Login newUserState={setNewUser} isLoggedInState={setIsLoggedIn}/>} />
-            <Route path="/dashboard" element={<Dashboard />} >
+            <Route path="/dashboard" element={<ProtectedRoute isLoggedIn={isLoggedIn}><Dashboard /></ProtectedRoute>} >
              <Route path="accounts" element={<Accounts />} />
              <Route path="admin" element={<Admin />} />
              <Route path="books" element={<Books />} />

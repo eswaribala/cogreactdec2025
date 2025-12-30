@@ -4,7 +4,7 @@ import Registration from './components/molecules/Registration/Registration.jsx'
 import './App.css'
 import ShopperHeader from './components/molecules/ShopperHeader/ShopperHeader.jsx';
 import Dashboard from './components/organisms/Dashboard/Dashboard.jsx';
-import { Route, Routes } from 'react-router-dom';
+import { Navigate, Route, Routes } from 'react-router-dom';
 import Accounts from './components/molecules/Accounts/Accounts.jsx';
 import Admin from './components/molecules/Admin/Admin.jsx';
 import Books from './components/molecules/Books/Books.jsx';
@@ -16,12 +16,13 @@ import Home from './components/molecules/Home/Home.jsx';
 import Sports from './components/molecules/Sports/Sports.jsx';
 import Footer from './components/molecules/Footer/Footer.jsx';
 import { Box } from '@mui/material';
+import Page404 from './components/molecules/Page404/Page404.jsx';
 
 function App() {
    const [newUser, setNewUser] = useState(false);
    const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-  function handleNewUser(value){
+  /* function handleNewUser(value){
     setNewUser(value);
   }
   function handleIsLoggedIn(value){
@@ -33,12 +34,12 @@ function App() {
   } 
   if(!newUser && !isLoggedIn){
     content = <Login newUserState={handleNewUser} isLoggedInState={handleIsLoggedIn} />;
-  }  
+  }   */
   return (
     <div className="app-layout">
       <ShopperHeader />
-      {content}
-      <Box
+      
+      {/* <Box
   sx={{
     minHeight: "5vh",
     display: "flex",
@@ -48,11 +49,11 @@ function App() {
   }}
 >
         <Footer />
-      </Box>
-      {
-        isLoggedIn && <div className="app-content">
+      </Box> */}
+     
           <Routes>
-            <Route path="/" element={<Login />} />
+            <Route path="/" element={<Navigate to={isLoggedIn ? "/dashboard/home" : "/login"} />} />
+            <Route path="/login" element={newUser?<Registration newUserState={setNewUser} />:<Login newUserState={setNewUser} isLoggedInState={setIsLoggedIn}/>} />
             <Route path="/dashboard" element={<Dashboard />} >
              <Route path="accounts" element={<Accounts />} />
              <Route path="admin" element={<Admin />} />
@@ -64,11 +65,12 @@ function App() {
              <Route path="home" element={<Home />} />
              <Route path="sports" element={<Sports />} />
             </Route>
+            <Route path="*" element={<Page404 />} />
           </Routes>
        
         </div>
-      }
-    </div>
+      
+    
   )
 }
 

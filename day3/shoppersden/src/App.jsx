@@ -60,6 +60,7 @@ function App() {
              <Route path="accounts" element={<Accounts />} />
              <Route path="admin" element={<Admin />} />
              <Route path="books" element={<Books />} />
+             <Route path="bookdetails/:bookId" element={<Books />} />
              <Route path="clothing" element={<Clothing />} />
              <Route path="gifts" element={<Gifts />} />
              <Route path="faqs" element={<FAQ />} />
@@ -67,6 +68,7 @@ function App() {
              <Route path="home" element={<Home />} />
              <Route path="sports" element={<Sports />} />
             </Route>
+           {/*  <Route path="/profile" element={<ProtectedRoute isLoggedIn={isLoggedIn}><Registration newUserState={setNewUser} /></ProtectedRoute>} /> */}
             <Route path="*" element={<Page404 />} />
           </Routes>
        

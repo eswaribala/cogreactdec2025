@@ -41,17 +41,6 @@ function App() {
     <div className="app-layout">
       <ShopperHeader />
       
-      {/* <Box
-  sx={{
-    minHeight: "5vh",
-    display: "flex",
-    flexDirection: "column",
-    bgcolor: "background.paper",
-    pb: "20px", // ✅ reserves space for fixed footer
-  }}
->
-        <Footer />
-      </Box> */}
      
           <Routes>
             <Route path="/" element={<Navigate to={isLoggedIn ? "/dashboard/home" : "/login"} />} />
@@ -60,7 +49,7 @@ function App() {
              <Route path="accounts" element={<Accounts />} />
              <Route path="admin" element={<Admin />} />
              <Route path="books" element={<Books />} />
-             <Route path="bookdetails/:bookId" element={<Books />} />
+             <Route path="books/:bookId" element={<Books />} />
              <Route path="clothing" element={<Clothing />} />
              <Route path="gifts" element={<Gifts />} />
              <Route path="faqs" element={<FAQ />} />
@@ -71,7 +60,18 @@ function App() {
            {/*  <Route path="/profile" element={<ProtectedRoute isLoggedIn={isLoggedIn}><Registration newUserState={setNewUser} /></ProtectedRoute>} /> */}
             <Route path="*" element={<Page404 />} />
           </Routes>
-       
+         <Box
+  sx={{
+    minHeight: "5vh",
+    display: "flex",
+    flexDirection: "column",
+    bgcolor: "background.paper",
+    pb: "20px", // ✅ reserves space for fixed footer
+  }}
+>
+        <Footer />
+      </Box> 
+     
         </div>
       
     

@@ -2,14 +2,19 @@ import React, { use } from 'react';
 
 import './BookDetails.css';
 import { Typography } from '@mui/material';
-
+import { useParams } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { Box } from '@mui/material';
 function BookDetails() {
   //route param to get bookId
-  const bookId=useParams();
+  const {bookId} = useParams();
   const [bookDetails, setBookDetails] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   useEffect(()=>{
+    if (!bookId) return;          // ✅ IMPORTANT: stop here if no id
+
+    setBookDetails(null);    
     //fetch book details using bookId
     fetch(import.meta.env.VITE_BOOKS_BaseURL+`/${bookId}`)
     .then((res)=>res.json())
@@ -32,14 +37,11 @@ function BookDetails() {
   }
   return(
     <Box>
-      <Typography>{bookDetails?.id}</Typography>
-      <Typography>{bookDetails?.isbn}</Typography>
-      <Typography>{bookDetails?.title}</Typography>
-      <Typography>{bookDetails?.author}</Typography>
-      <Typography>{bookDetails?.category}</Typography>
-      <Typography>{bookDetails?.price}</Typography>
-       <Typography>{bookDetails?.rating}</Typography>
-        <Typography>{bookDetails?.publishedYear}</Typography>
+      {Object.entries(bookDetails).map(([key, value]) => (
+    <Typography key={key} sx={{ mb: 1 }}>
+      <strong>{key}:</strong> {value}
+    </Typography>
+  ))}
     </Box>
   )
  

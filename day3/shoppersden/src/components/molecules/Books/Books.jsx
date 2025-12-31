@@ -2,8 +2,9 @@ import React from 'react';
 import MenuBookIcon from '@mui/icons-material/MenuBook';
 import CurrencyRupeeIcon from '@mui/icons-material/CurrencyRupee';
 import './Books.css';
-import { Box,Chip, List, ListItem, ListItemAvatar, ListItemText, Paper,Pagination,Stack,Typography } from '@mui/material';
-
+import { Box,Button,Chip, List, ListItem, ListItemAvatar, ListItemText, Paper,Pagination,Stack,Typography, Avatar, Dialog, DialogTitle, DialogContent, DialogActions } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
+import BookDetails from '../BookDetails/BookDetails';
 function Books() {
   const [items, setItems] = React.useState([]);
   const [page, setPage] = React.useState(1);
@@ -12,6 +13,10 @@ function Books() {
   const [error, setError] = React.useState(null);
    const [totalPages, setTotalPages] = React.useState(1);
   const [totalItems, setTotalItems] = React.useState(0);
+  const [open, setOpen] = React.useState(false);
+  const[close, setClose]=React.useState(false);
+
+  const navigate = useNavigate();
   
   React.useEffect(() => {
     fetch(`${import.meta.env.VITE_BOOKS_BaseURL}?page=${page}&limit=${limit}`)
@@ -38,6 +43,17 @@ function Books() {
     return <div>Error loading books: {error.message}</div>;
   }
 
+  function handleOpenDetails(book){
+    console.log("Book clicked:", book);
+  setOpen(true);
+  navigate(`/dashboard/books/${book.id}`);
+  }
+  function handleClose() {
+    setOpen(false); 
+    // Close book details popup + reset route param
+    navigate(`/dashboard/books/`, { replace: true });
+  }
+
 
   return(
     <div className="books-container">
@@ -60,9 +76,14 @@ function Books() {
             items.map((book) => (
               <ListItem key={book.id}>
                <ListItemAvatar>
+                <Avatar sx={{ cursor: "pointer", bgcolor: "primary.main" }} onClick={(e) => {
+        handleOpenDetails(book);  // opens popup + route param
+      }}>
                  <MenuBookIcon/>
+                 </Avatar>
                 </ListItemAvatar> 
-               <ListItemText primary={
+               <ListItemText disableTypography primary={
+            
                   <Box>
                     <Typography variant="h6">
                       {book.title}
@@ -107,6 +128,17 @@ function Books() {
            disabled={loading || totalPages <= 1}
         />
       </Stack>
+      <Dialog open={open} onClose={handleClose} >
+        <DialogTitle>Book Details</DialogTitle>
+        <DialogContent> 
+          {open&&<BookDetails />}
+        </DialogContent>
+        <DialogActions>
+          <DialogActions>
+          <Button onClick={handleClose}>Close</Button>
+        </DialogActions>
+        </DialogActions>
+      </Dialog>
     </div>
   );
 }

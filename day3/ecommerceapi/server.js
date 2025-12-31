@@ -7,6 +7,10 @@ const gifts = require("./data/gifts.json");
 // Load books.json once (in-memory)
 const booksPath = path.join(__dirname, "data", "books.json");
 const books = JSON.parse(fs.readFileSync(booksPath, "utf-8"));
+const sportsPath = path.join(__dirname, "data", "sports.json");
+const sports = JSON.parse(fs.readFileSync(sportsPath, "utf-8"));
+const clothingPath = path.join(__dirname, "data", "clothing.json");
+const clothing = JSON.parse(fs.readFileSync(clothingPath, "utf-8"));
 const app = express();
 const PORT = 4000;
 app.use(cors());
@@ -23,6 +27,18 @@ app.get("/api/gifts", (req, res) => {
   res.status(200).json({
     count: gifts.length,
     data: gifts
+  });
+});
+app.get("/api/sports", (req, res) => {
+  res.status(200).json({
+    count: sports.length,
+    data: sports
+  });
+});
+app.get("/api/clothing", (req, res) => {
+  res.status(200).json({
+    count: clothing.length,
+    data: clothing
   });
 });
 /**
@@ -98,6 +114,26 @@ app.get("/api/books/:id", (req, res) => {
   } else {
     res.status(404).json({ error: "Book not found" });
   }
+});
+let products = [];
+let idCounter = 1;
+// just to verify in browser
+app.get("/api/products", (req, res) => {
+  res.json({ count: products.length, data: products });
+});
+
+// add product
+app.post("/api/products", (req, res) => {
+  const { name, category, price } = req.body;
+
+  if (!name || !category || typeof price !== "number") {
+    return res.status(400).json({ message: "name, category, price(number) required" });
+  }
+
+  const newProduct = { id: idCounter++, name, category, price };
+  products.unshift(newProduct);
+
+  res.status(201).json(newProduct);
 });
 app.listen(PORT, () => {
     console.log(`Server is running on http://localhost:${PORT}`);

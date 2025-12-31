@@ -1,9 +1,9 @@
 import React, { use } from 'react';
-
+import { useState,useMemo } from 'react';
 import './useFilter.css';
 
 function useFilter(title,itemsData) {
-  const[search,setSearch]=React.useState('');
+  const[search,setSearch]=useState('');
   const fileteredItems=useMemo(() => {
    const q=search.trim().toLowerCase();
     if(!q) return itemsData;

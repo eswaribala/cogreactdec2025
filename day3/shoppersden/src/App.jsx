@@ -49,6 +49,7 @@ function App() {
              <Route path="accounts" element={<Accounts />} />
              <Route path="admin" element={<Admin />} />
              <Route path="books" element={<Books />} />
+             {/* <Route path="books/:bookId/:name" element={<Books />} /> */}
              <Route path="books/:bookId" element={<Books />} />
              <Route path="clothing" element={<Clothing />} />
              <Route path="gifts" element={<Gifts />} />

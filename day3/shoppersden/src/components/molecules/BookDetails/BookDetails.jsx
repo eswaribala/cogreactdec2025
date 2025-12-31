@@ -7,6 +7,7 @@ import { useEffect, useState } from 'react';
 import { Box } from '@mui/material';
 function BookDetails() {
   //route param to get bookId
+  //const {bookId, name} = useParams();
   const {bookId} = useParams();
   const [bookDetails, setBookDetails] = useState(null);
   const [loading, setLoading] = useState(true);

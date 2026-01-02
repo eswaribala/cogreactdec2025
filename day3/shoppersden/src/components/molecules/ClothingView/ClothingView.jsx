@@ -2,10 +2,15 @@ import React from 'react';
 
 import './ClothingView.css';
 import Typography from '@mui/material/Typography';
+import TextField from '@mui/material/TextField';
+import List from '@mui/material/List';
+import ListItem from '@mui/material/ListItem';
+import ListItemText from '@mui/material/ListItemText';
+import Box from '@mui/material/Box';
 
 function ClothingView({title,items,search,setSearch}) {
   return (
-    <Box>
+    <Box sx={{}}>
       <Typography variant="h4" gutterBottom>
         {title}
       </Typography>

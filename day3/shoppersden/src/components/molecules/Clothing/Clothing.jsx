@@ -1,7 +1,7 @@
 import React from 'react';
 import {useState,useEffect} from 'react';
-import ClothingView from '../../views/ClothingView/ClothingView';
-import withSearchFilter from '../../../HOCs/withSearchFilter/withSearchFilter';
+import ClothingView from '../ClothingView/ClothingView.jsx';
+import withSearchFilter from '../withSearchFilter/withSearchFilter.jsx';
 import './Clothing.css';
 
 function Clothing() {

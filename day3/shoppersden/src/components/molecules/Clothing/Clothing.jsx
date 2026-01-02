@@ -8,6 +8,7 @@ function Clothing() {
   const[clothes,setClothes]=useState([]);
   const[loading,setLoading]=useState(true);
   const[error,setError]=useState(false);
+  // HOC for adding search filter functionality
   const ClothingViewUI=withSearchFilter(ClothingView,"Clothing");
   useEffect(()=>{
     fetch(import.meta.env.VITE_CLOTHES_API)

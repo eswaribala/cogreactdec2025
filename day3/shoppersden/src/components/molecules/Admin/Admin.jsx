@@ -44,13 +44,14 @@ function Admin() {
         });
     }
     return(
-        <Box className="admin-container">
-            <Typography variant="h4" gutterBottom>
+        <Box sx={{p:3,maxWidth:600,margin:"auto"}}>
+            <Typography variant="h4" gutterBottom sx={{mb:3,textAlign:"center"}}>
                 Admin Panel - Add New Product
             </Typography>
             {error && <Alert sx={{mb:2}} severity="error">{error}</Alert>}
-            <Stack>
-                <Box component="form" sx={{'& .MuiTextField-root': { m: 1, width: '25ch' },}} noValidate autoComplete="off" onSubmit={handleSubmit}>
+            <Box component="form" onSubmit={handleSubmit}  sx={{display:"flex",flexDirection:"column",gap:2}}>
+            <Stack spacing={2}>
+                
                 <TextField label="Product Name" name="name" value={form.name} onChange={handleChange} variant="outlined">
 
                 </TextField>
@@ -62,8 +63,9 @@ function Admin() {
                 </TextField>
                 <Button variant="contained" color="primary" disabled={loading}>{loading?"Adding...":"Add Product"}</Button>
            
-        </Box>
+        
         </Stack>
+        </Box>
         </Box>
     )
 }

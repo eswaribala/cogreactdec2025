@@ -11,10 +11,20 @@ const sportsPath = path.join(__dirname, "data", "sports.json");
 const sports = JSON.parse(fs.readFileSync(sportsPath, "utf-8"));
 const clothingPath = path.join(__dirname, "data", "clothing.json");
 const clothing = JSON.parse(fs.readFileSync(clothingPath, "utf-8"));
+const bcrypt = require("bcryptjs");
+const jwt = require("jsonwebtoken");
 const app = express();
 const PORT = 4000;
 app.use(cors());
 app.use(bodyParser.json());
+// ✅ put this in .env in real projects
+const JWT_SECRET = "change_this_secret_in_env";
+const JWT_EXPIRES_IN = "1h";
+
+// In-memory users (demo)
+const users = []; // { id, name, email, passwordHash }
+
+const makeId = () => Math.random().toString(36).slice(2);
 
 app.get('/', (req, res) => {
     res.send('Welcome to the E-commerce API');
@@ -135,6 +145,87 @@ app.post("/api/products", (req, res) => {
 
   res.status(201).json(newProduct);
 });
+
+// -------------------- REGISTER --------------------
+app.post("/api/auth/register", async (req, res) => {
+  try {
+    const name=req.body?.userName;
+    
+    const password=req.body?.password;
+
+    if (!name?.trim() ||  !password) {
+      return res.status(400).json({ message: "name,  password required" });
+    }
+
+
+
+    const passwordHash = await bcrypt.hash(password, 10);
+    const user = { id: makeId(), name: name.trim(), passwordHash };
+    users.push(user);
+
+    return res.status(201).json({ message: "Registered successfully" });
+  } catch (e) {
+    return res.status(500).json({ message: "Server error" });
+  }
+});
+
+// -------------------- LOGIN --------------------
+app.post("/api/auth/login", async (req, res) => {
+  try {
+    const { userName, password } = req.body || {};
+
+    if (!userName || !password) {
+      return res.status(400).json({ message: "name and password required" });
+    }
+
+    // Example: in-memory users
+    // const user = users.find(u => u.email.toLowerCase() === email.toLowerCase());
+
+    // Example: Mongo
+    // const user = await User.findOne({ email: email.toLowerCase() });
+
+    const user = users.find((u) => u.name.toLowerCase() === userName.toLowerCase());
+
+    if (!user) return res.status(401).json({ message: "Invalid credentials" });
+
+    if (!user.passwordHash) {
+      // helps catch wrong field name quickly
+      return res.status(500).json({ message: "User password hash missing (field mismatch)" });
+    }
+
+    const ok = await bcrypt.compare(password, user.passwordHash);
+    if (!ok) return res.status(401).json({ message: "Invalid credentials" });
+
+    const token = jwt.sign(
+      { sub: user.id, name: user.name },
+      JWT_SECRET,
+      { expiresIn: "1h" }
+    );
+
+    return res.json({ token, user: { id: user.id, name: user.name } });
+  } catch (err) {
+    console.error("LOGIN ERROR:", err);
+    return res.status(500).json({ message: err.message || "Server error" });
+  }
+});
+
+// -------------------- AUTH MIDDLEWARE --------------------
+function requireAuth(req, res, next) {
+  const header = req.headers.authorization || "";
+  const [type, token] = header.split(" ");
+
+  if (type !== "Bearer" || !token) {
+    return res.status(401).json({ message: "Missing Bearer token" });
+  }
+
+  try {
+    const payload = jwt.verify(token, JWT_SECRET);
+    req.user = payload; // { sub, email, name, iat, exp }
+    return next();
+  } catch (e) {
+    return res.status(401).json({ message: "Invalid/expired token" });
+  }
+}
 app.listen(PORT, () => {
     console.log(`Server is running on http://localhost:${PORT}`);
 });

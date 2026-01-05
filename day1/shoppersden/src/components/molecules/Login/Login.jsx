@@ -38,8 +38,8 @@ function Login({newUserState, isLoggedInState}) {
     validationSchema:validationSchema,
     onSubmit:(values)=>{
       console.log("Form data",values);
-      console.log("API URL:",import.meta.env.VITE_API_URL);
-      const api_url=import.meta.env.VITE_API_URL;
+      console.log("API URL:",import.meta.env.VITE_LOGIN_ENDPOINT);
+      const api_url=import.meta.env.VITE_LOGIN_ENDPOINT;
       const jsonData={
         userName:values.userName,
         password:values.password
@@ -57,6 +57,7 @@ function Login({newUserState, isLoggedInState}) {
       .then((response)=>response.json())
       .then((data)=>{
         console.log("Response from API:",data); 
+        localStorage.setItem("token", data.token);
         setOpen(true);
         setShowAlert(true);
         isLoggedInState(true);

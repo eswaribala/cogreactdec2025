@@ -1,4 +1,4 @@
-import { ADD_PRODUCT_REQUEST,ADD_PRODUCT_SUCCESS,ADD_PRODUCT_FAILURE } from "./productTypes";
+import { ADD_PRODUCT_REQUEST,ADD_PRODUCT_SUCCESS,ADD_PRODUCT_FAILURE } from "./productTypes.jsx";
 
 export const addProductRequest = (newProduct)=>async(dispatch)=>{
     try{

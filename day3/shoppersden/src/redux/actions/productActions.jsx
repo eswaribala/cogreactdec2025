@@ -3,6 +3,7 @@ import { ADD_PRODUCT_REQUEST,ADD_PRODUCT_SUCCESS,ADD_PRODUCT_FAILURE } from "./p
 export const addProductRequest = (newProduct)=>async(dispatch)=>{
     try{
         dispatch({type:ADD_PRODUCT_REQUEST});
+        console.log('Adding product:', newProduct);
         const res= await fetch(`${import.meta.env.VITE_PRODUCTS_API}`,{
             method:"POST",
             headers:{

@@ -84,20 +84,7 @@ export default function Admin() {
         Products in Redux Store: {products.length}
       </Typography>
 
-      <List>
-       {products.map((item) => (
-        <ListItem key={item.id} divider>
-          <ListItemText
-            primary={`${item.id} - ${item.name}`}
-            secondary={`${item.category} • ₹${item.price}`}
-          />
-        </ListItem>
-      ))}
-      </List>
-
-      <Typography variant="caption">
-        (Showing first 5 from Redux state)
-      </Typography>
+     
     </Box>
   );
 }

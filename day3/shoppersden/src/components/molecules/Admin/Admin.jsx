@@ -33,6 +33,7 @@ function Admin() {
         const name=form.name;
         const category=form.category;
         const price=form.price;
+        console.log('Form submitted with:', form);
         if(!name||!category||!price){
             return;
         }
@@ -58,10 +59,10 @@ function Admin() {
                 <TextField label="Category" name="category" value={form.category} onChange={handleChange} variant="outlined">
 
                 </TextField>
-                <TextField label="Price" name="price" value={form.price} onChange={handleChange} variant="outlined">
+                <TextField label="Price" type="number" name="price" value={form.price} onChange={handleChange} variant="outlined">
 
                 </TextField>
-                <Button variant="contained" color="primary" disabled={loading}>{loading?"Adding...":"Add Product"}</Button>
+                <Button type="submit" variant="contained" color="primary" disabled={loading}>{loading?"Adding...":"Add Product"}</Button>
            
         
         </Stack>

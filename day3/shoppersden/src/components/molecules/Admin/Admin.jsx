@@ -16,7 +16,7 @@ function Admin() {
     const[form,setForm]=useState({
         name:"",
         category:"",
-        price:"",
+        price:0,
     })
 
     const handleChange=(e)=>{
@@ -32,7 +32,7 @@ function Admin() {
         // Dispatch action to add product
         const name=form.name;
         const category=form.category;
-        const price=form.price;
+        const price=Number(form.price);
         console.log('Form submitted with:', form);
         if(!name||!category||!price){
             return;
@@ -41,7 +41,7 @@ function Admin() {
         setForm({
             name:"",
             category:"",
-            price:"",
+            price:0,
         });
     }
     return(

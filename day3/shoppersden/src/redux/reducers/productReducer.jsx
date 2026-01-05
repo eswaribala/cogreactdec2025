@@ -17,7 +17,7 @@ const productReducer = (state = initialState, action) => {
             return {
                 ...state,
                 loading: false, 
-                products: [...state.products, action.payload] 
+                products: [action.payload,...state.products] 
             };
         case ADD_PRODUCT_FAILURE:
             return {

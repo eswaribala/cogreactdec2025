@@ -2,7 +2,7 @@ import React, { use } from 'react';
 
 import './Admin.css';
 
-import {Box,TextField,Button,Stack, Typography, Alert} from '@mui/material';
+import {Box,TextField,Button,Stack, Typography, Alert, Divider,List,ListItem,ListItemText} from '@mui/material';
 import { useSelector } from 'react-redux';
 import { useState } from 'react';
 import { addProductRequest } from '../../../redux/actions/productActions';
@@ -11,8 +11,8 @@ import { useDispatch } from 'react-redux';
 
 function Admin() {
     const dispatch=useDispatch();
-    useSelector((state)=>console.log(state));
-    const {loading,error}=useSelector((state)=>state.product);
+    
+    const {loading,error,products}=useSelector((state)=>state.productState);
     const[form,setForm]=useState({
         name:"",
         category:"",
@@ -66,6 +66,20 @@ function Admin() {
         
         </Stack>
         </Box>
+        <Divider sx={{my:4}}/>
+        <Typography variant="h5" gutterBottom>
+            Products in Redux Store: {products.length}
+        </Typography>
+        <List>
+            {products.slice(0,5).map((product)=>(
+                <ListItem key={product.id}>
+                    <ListItemText primary={product.name} secondary={`Category: ${product.category} - Price: $${product.price}`}/>
+                </ListItem>
+            ))}
+        </List>
+        <Typography variant="body2" color="textSecondary">
+            (Showing up to 5 products)
+        </Typography>
         </Box>
     )
 }

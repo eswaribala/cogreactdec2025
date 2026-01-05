@@ -4,7 +4,7 @@ import { BrowserRouter } from 'react-router-dom';
 import './index.css'
 import AppComponent from './App.jsx'
 import { Provider } from 'react-redux';
-import store from './store/store.js';
+import store from './redux/store/store.jsx';
 
 createRoot(document.getElementById('ecommerce-root')).render(
   <StrictMode>

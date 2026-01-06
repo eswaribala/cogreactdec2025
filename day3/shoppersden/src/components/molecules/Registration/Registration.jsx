@@ -10,6 +10,8 @@ import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
 import PhoneInTalkIcon from '@mui/icons-material/PhoneInTalk';
 import './Registration.css';
 import { useDispatch,useSelector } from 'react-redux';
+import { registerUserRequest } from '../../../redux/actions/registrationActions.jsx';
+
 
 function Registration({newUserState}) {
   const dispatch=useDispatch();
@@ -83,6 +85,9 @@ function Registration({newUserState}) {
       const jsonDataString = JSON.stringify(jsonData);
       console.log('JSON DATA STRING:', jsonDataString);
       dispatch(registerUserRequest(jsonData));
+      console.log('Registration dispatched');
+      console.log('Register Success:', registerSuccess);
+      
       newUserState(false);
     }
   });

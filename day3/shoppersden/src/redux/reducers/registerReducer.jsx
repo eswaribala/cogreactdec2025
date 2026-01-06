@@ -1,4 +1,4 @@
-import {REGISTER_USER_REQUEST, REGISTER_USER_SUCCESS, REGISTER_USER_FAILURE} from '../actions/registerTypes.jsx ';
+import {REGISTER_USER_REQUEST, REGISTER_USER_SUCCESS, REGISTER_USER_FAILURE} from '../actions/registrationTypes.jsx';
 const initialState = {
     registering: false,
     registerSuccess: false,

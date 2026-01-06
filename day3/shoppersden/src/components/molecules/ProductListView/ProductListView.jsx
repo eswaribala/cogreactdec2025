@@ -1,4 +1,6 @@
 import React from 'react';
+import { Box, Typography, List, ListItem, ListItemText } from '@mui/material';
+import { useSelector } from 'react-redux';
 
 import './ProductListView.css';
 

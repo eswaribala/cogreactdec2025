@@ -11,6 +11,7 @@ export default function DashboardTabs() {
   const topRoutes = {
     "/dashboard/home": "1",
     "/dashboard/admin": "2",
+    "/dashboard/productlistview": "10",
     "/dashboard/accounts": "3",
     "/dashboard/faqs": "4",
     "/dashboard/help": "5",
@@ -53,6 +54,7 @@ export default function DashboardTabs() {
     const tabToRoute = {
       "1": "home",
       "2": "admin",
+      "10": "productlistview",
       "3": "accounts",
       "4": "faqs",
       "5": "help",
@@ -93,6 +95,7 @@ export default function DashboardTabs() {
           >
             <Tab label="Home" value="1" />
             <Tab label="Admin" value="2" />
+            <Tab label="Product List View" value="10" />
             <Tab label="Accounts" value="3" />
             <Tab label="FAQ's" value="4" />
             <Tab label="Help" value="5" />

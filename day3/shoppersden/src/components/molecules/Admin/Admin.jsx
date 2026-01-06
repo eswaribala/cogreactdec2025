@@ -71,7 +71,7 @@ function Admin() {
         <Typography variant="h5" gutterBottom>
             Products in Redux Store: {products.length}
         </Typography>
-        <List>
+        {/* <List>
             {products.slice(0,5).map((product)=>(
                 <ListItem key={product.id}>
                     <ListItemText primary={product.name} secondary={`Category: ${product.category} - Price: $${product.price}`}/>
@@ -80,7 +80,7 @@ function Admin() {
         </List>
         <Typography variant="body2" color="textSecondary">
             (Showing up to 5 products)
-        </Typography>
+        </Typography> */}
         </Box>
     )
 }

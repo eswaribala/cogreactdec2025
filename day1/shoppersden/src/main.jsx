@@ -5,13 +5,16 @@ import './index.css'
 import { Provider } from 'react-redux';
 import AppComponent from './App.jsx'
 import { store } from './redux/store/store.jsx';
+import { AuthProvider } from './components/molecules/AuthProvider/AuthProvider.jsx';
 
 createRoot(document.getElementById('ecommerce-root')).render(
   <StrictMode>
    <BrowserRouter>
+   <AuthProvider>
    <Provider store={store}>
      <AppComponent/>
    </Provider>
+   </AuthProvider>
    </BrowserRouter> 
   </StrictMode>,
 )

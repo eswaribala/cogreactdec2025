@@ -209,6 +209,14 @@ app.post("/api/auth/login", async (req, res) => {
   }
 });
 
+// ✅ Verify endpoint
+app.get("/api/auth/verify", requireAuth, (req, res) => {
+  return res.status(200).json({
+    valid: true,
+    user: req.user, // decoded payload
+  });
+});
+
 // -------------------- AUTH MIDDLEWARE --------------------
 function requireAuth(req, res, next) {
   const header = req.headers.authorization || "";

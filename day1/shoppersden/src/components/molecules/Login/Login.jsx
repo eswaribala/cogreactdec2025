@@ -9,7 +9,7 @@ import Alert from '@mui/material/Alert';
 import CheckIcon from '@mui/icons-material/Check';
 import Snackbar from '@mui/material/Snackbar';
 import { Form } from 'formik';
-
+import { useAuth } from '../AuthProvider/AuthProvider';
 import './Login.css';
 import { useNavigate } from 'react-router-dom';
 
@@ -19,8 +19,9 @@ function Login({newUserState, isLoggedInState}) {
   const[password,setPassword]=React.useState(""); */
   const[open,setOpen]=React.useState(false);
   const[showAlert,setShowAlert]=React.useState(true);
+  const[alertMessage,setAlertMessage]=React.useState("");
   const navigate = useNavigate();
-
+  const { login } = useAuth();
   const validationSchema=Yup.object({
     userName:Yup.string().required("UserName is required"),
     password:Yup.string().required("Password is required")
@@ -54,18 +55,33 @@ function Login({newUserState, isLoggedInState}) {
         },
         body:jsonDataString
       })
-      .then((response)=>response.json())
+      .then(async (response) => {
+        if (!response.ok) {
+          //401 / 403 / 500
+          localStorage.removeItem("token");
+          const errorData = await response.json();
+          throw new Error(errorData.message || "Invalid credentials");
+        }
+        return response.json();
+      })
       .then((data)=>{
         console.log("Response from API:",data); 
         localStorage.setItem("token", data.token);
         setOpen(true);
         setShowAlert(true);
+        setAlertMessage("Login Successful!");
         isLoggedInState(true);
+        login(data.token);
         navigate("/dashboard"); //same as history.push api
             
       })
       .catch((error)=>{
         console.error("Error while calling API:",error);
+        localStorage.removeItem("token");
+        //Stay on login page
+        setOpen(true);
+        setShowAlert(true);
+        setAlertMessage(error.message);
       })
         
     } 
@@ -92,7 +108,7 @@ function Login({newUserState, isLoggedInState}) {
         anchorOrigin={{ vertical: "center", horizontal: "center" }}
       >
      <Alert icon={<CheckIcon fontSize="inherit" />} sx={{width: '100%',margin: '5px',padding: '5px'}} severity="success">
-          "Login Successful!"
+          {alertMessage}
         </Alert>   
         </Snackbar>
  }

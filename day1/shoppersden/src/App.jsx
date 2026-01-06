@@ -21,11 +21,11 @@ import Page404 from "./components/molecules/Page404/Page404.jsx";
 import BookDetails from "./components/molecules/BookDetails/BookDetails.jsx";
 import ProtectedRoute from "./components/molecules/ProtectedRoute/ProtectedRoute.jsx";
 import ProductsFromStore from "./components/molecules/ProductsFromStore/ProductsFromStore.jsx";
-
+//import { useAuth } from "./components/molecules/AuthProvider/AuthProvider.jsx";
 function App() {
   const [newUser, setNewUser] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-
+ // const { isAuthenticated } = useAuth();
   return (
     <>
       <ShopperHeader />
@@ -53,7 +53,7 @@ function App() {
         <Route
           path="/dashboard"
           element={
-            <ProtectedRoute isLoggedIn={isLoggedIn}>
+            <ProtectedRoute>
               <Dashboard />
             </ProtectedRoute>
           }

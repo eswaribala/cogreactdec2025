@@ -1,7 +1,7 @@
 import React from 'react';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
-import { Box, Button, TextField } from '@mui/material';
+import { Alert, Box, Button, TextField } from '@mui/material';
 import InputAdornment from '@mui/material/InputAdornment';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import LockIcon from '@mui/icons-material/Lock';  
@@ -9,8 +9,11 @@ import EmailIcon from '@mui/icons-material/Email';
 import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
 import PhoneInTalkIcon from '@mui/icons-material/PhoneInTalk';
 import './Registration.css';
+import { useDispatch,useSelector } from 'react-redux';
 
 function Registration({newUserState}) {
+  const dispatch=useDispatch();
+  const{registering,registerError,registerSuccess,registerData}=useSelector((state)=>state.registerState);
   const validationSchema = Yup.object({
     firstName: Yup.string()
       .min(3, 'Must be at least 3 characters' )
@@ -79,13 +82,15 @@ function Registration({newUserState}) {
       };
       const jsonDataString = JSON.stringify(jsonData);
       console.log('JSON DATA STRING:', jsonDataString);
+      dispatch(registerUserRequest(jsonData));
       newUserState(false);
     }
   });
   
   return (
     <Box sx={{ width: '40%', height: '90vh', marginRight: '3%', display: 'flex', float: 'right', alignItems: 'center' }}>
-   
+     {registerSuccess && (<Alert severity="success" sx={{mb:2}}>Registration Successful!</Alert>)}
+      {registerError && (<Alert severity="error" sx={{mb:2}}>Registration Failed: {registerError}</Alert>)}
     <form onSubmit={formik.handleSubmit} style={{width:"100%"}}>
       <fieldset className='border-purple-700 border-2 rounded-md p-4'>
         <legend className='text-xl text-center   font-semibold text-purple-700'>Registration</legend>

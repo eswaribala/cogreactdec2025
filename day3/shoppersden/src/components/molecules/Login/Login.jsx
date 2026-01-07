@@ -78,7 +78,8 @@ const {login}=useAuth();
       setOpen(true);
       setShowAlert(true);
       isLoggedInState(true);
-      login(loggingData.token);
+      const token=localStorage.getItem("authToken");
+      login(token);
       navigate("/dashboard/home"); //same as history.push api
      }
     

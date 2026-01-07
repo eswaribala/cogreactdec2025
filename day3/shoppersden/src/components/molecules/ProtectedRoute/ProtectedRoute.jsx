@@ -2,16 +2,18 @@ import React, { use } from 'react';
 
 import './ProtectedRoute.css';
 import { useLocation,Navigate } from 'react-router-dom';
-
-function ProtectedRoute({isLoggedIn, children}) {
+import { useAuth } from '../AuthProvider/AuthProvider.jsx';
+function ProtectedRoute({children}) {
   const location = useLocation();
- 
+  const { isAuthenticated, loading } = useAuth();
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+  if (!isAuthenticated) {
+    return <Navigate to="/login" replace state={{ from: location.pathname }} />;
+  }
   
-  return (
-    <div className="ProtectedRoute">
-      {isLoggedIn ? children : <Navigate to="/login" replace state={{ from: location }} />}
-    </div>
-  );
+  return children;
 }
 
 

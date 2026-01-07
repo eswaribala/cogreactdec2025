@@ -24,6 +24,7 @@ import ProductListView from './components/molecules/ProductListView/ProductListV
 function App() {
    const [newUser, setNewUser] = useState(false);
    const [isLoggedIn, setIsLoggedIn] = useState(false);
+   
 
   /* function handleNewUser(value){
     setNewUser(value);
@@ -46,7 +47,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Navigate to={isLoggedIn ? "/dashboard/home" : "/login"} />} />
             <Route path="/login" element={newUser?<Registration newUserState={setNewUser} />:<Login newUserState={setNewUser} isLoggedInState={setIsLoggedIn}/>} />
-            <Route path="/dashboard" element={<ProtectedRoute isLoggedIn={isLoggedIn}><Dashboard /></ProtectedRoute>} >
+            <Route path="/dashboard" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} >
              <Route path="accounts" element={<Accounts />} />
              <Route path="admin" element={<Admin />} />
              <Route path="productlistview" element={<ProductListView />} />

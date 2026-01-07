@@ -13,7 +13,9 @@ import { useDispatch,useSelector } from 'react-redux';
 import './Login.css';
 import { useNavigate } from 'react-router-dom';
 import { loginRequest } from '../../../redux/actions/loginActions.jsx';
+import { useAuth } from '../AuthProvider/AuthProvider.jsx';
 
+const {login}=useAuth();
 function Login({newUserState, isLoggedInState}) {
   const dispatch=useDispatch();
   const {logging,loggingSuccess,loggingError,loggingData}=useSelector((state)=>state.loginState);
@@ -76,6 +78,7 @@ function Login({newUserState, isLoggedInState}) {
       setOpen(true);
       setShowAlert(true);
       isLoggedInState(true);
+      login(loggingData.token);
       navigate("/dashboard/home"); //same as history.push api
      }
     

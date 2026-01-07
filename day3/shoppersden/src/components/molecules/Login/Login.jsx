@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Box, Button, TextField} from '@mui/material';
 import InputAdornment from '@mui/material/InputAdornment';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
@@ -71,7 +71,8 @@ function Login({newUserState, isLoggedInState}) {
       }) */
      dispatch(loginRequest(jsonData));
      console.log("Logging Success Value:",loggingSuccess);
-    
+     
+
       setOpen(true);
       setShowAlert(true);
       isLoggedInState(true);
@@ -81,6 +82,8 @@ function Login({newUserState, isLoggedInState}) {
    
   })
    
+   
+    
   function handleNewUser(){
     newUserState(true);
   }

@@ -16,6 +16,7 @@ export const loginRequest = (loggedInUser) => async (dispatch) => {
         }
         const data = await response.json();
         console.log('User logged in successfully:', data);
+        localStorage.setItem('authToken', data.token);
         dispatch({ type: LOGIN_SUCCESS, payload: data });
     } catch (error) {
         dispatch({ type: LOGIN_FAILURE, payload: error.message });

@@ -41,13 +41,13 @@ export const AuthProvider = ({ children }) => {
 
   // ✅ Call this after successful login
   const login = (token) => {
-    localStorage.setItem("token", token);
-    setIsAuthenticated(true);   // 🔥 THIS makes ProtectedRoute true immediately
+    //localStorage.setItem("token", token);
+    setIsAuthenticated(true);   //THIS makes ProtectedRoute true immediately
   };
 
   // ✅ Call this on logout or token failure
   const logout = () => {
-    localStorage.removeItem("token");
+    localStorage.removeItem("authToken");
     setIsAuthenticated(false);
   };
 

@@ -1,63 +1,61 @@
-import React, { use } from 'react';
-import { useState,useContext } from 'react';
-import './AuthProvider.css';
+import React, { createContext, useContext, useState, useEffect } from "react";
+import "./AuthProvider.css";
 
-const AuthContext=useContext();
+const AuthContext = createContext();
 
-function AuthProvider({children}) {
+export const AuthProvider = ({ children }) => {
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [loading, setLoading] = useState(true);
 
-  const[isAuthenticated, setIsAuthenticated] = useState(false);
-  const[loading, setLoading] = useState(true);
-  const[error, setError] = useState(null);
-  const token = localStorage.getItem('authToken');
-  if (!token) {
-    setIsAuthenticated(false);
-    setLoading(false);
-    return;
-  }
+  // ✅ Verify token (used on app load + can be reused)
   const verifyToken = async () => {
+    const token = localStorage.getItem("token");
+
+    if (!token) {
+      setIsAuthenticated(false);
+      setLoading(false);
+      return;
+    }
+
     try {
-      const response = await fetch(import.meta.env.VITE_TOKEN_API, {
-        method: 'GET',
-        headers: {
-          'Authorization': `Bearer ${token}`,
-        },
+      const res = await fetch(import.meta.env.VITE_TOKEN_API, {
+        headers: { Authorization: `Bearer ${token}` },
       });
-      if (response.ok) {
-        setIsAuthenticated(true);
-      } else {
-        setIsAuthenticated(false);
-      }
+
+      if (!res.ok) throw new Error("Invalid token");
+
+      await res.json();
+      setIsAuthenticated(true);
     } catch (err) {
-      setError(err);
+      localStorage.removeItem("token");
       setIsAuthenticated(false);
     } finally {
       setLoading(false);
     }
   };
 
+  // ✅ Run only once on initial app load
   useEffect(() => {
     verifyToken();
   }, []);
-  
+
+  // ✅ Call this after successful login
   const login = (token) => {
-    localStorage.setItem('authToken', token);
-    setIsAuthenticated(true);
+    localStorage.setItem("token", token);
+    setIsAuthenticated(true);   // 🔥 THIS makes ProtectedRoute true immediately
   };
 
+  // ✅ Call this on logout or token failure
   const logout = () => {
-    localStorage.removeItem('authToken');
+    localStorage.removeItem("token");
     setIsAuthenticated(false);
   };
 
   return (
-    <AuthContext.Provider value={{ isAuthenticated, loading, error, login, logout }}>
+    <AuthContext.Provider value={{ isAuthenticated, loading, login, logout, verifyToken }}>
       {children}
     </AuthContext.Provider>
   );
+};
 
-}
-
-export const useAuth=() => {
-  return useContext(AuthContext);
-}
+export const useAuth = () => useContext(AuthContext);

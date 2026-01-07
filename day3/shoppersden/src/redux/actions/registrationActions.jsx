@@ -14,6 +14,7 @@ export const registerUserRequest = (newUser) => async (dispatch) => {
             throw new Error(`HTTP error! status: ${response.status}`);
         }   
         const data = await response.json();
+        console.log('User registered successfully:', data);
         dispatch({ type: REGISTER_USER_SUCCESS, payload: data });
     } catch (error) {
         dispatch({ type: REGISTER_USER_FAILURE, payload: error.message });

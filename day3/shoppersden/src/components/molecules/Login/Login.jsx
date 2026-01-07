@@ -9,11 +9,13 @@ import Alert from '@mui/material/Alert';
 import CheckIcon from '@mui/icons-material/Check';
 import Snackbar from '@mui/material/Snackbar';
 import { Form } from 'formik';
-
+import { useDispatch,useSelector } from 'react-redux';
 import './Login.css';
 import { useNavigate } from 'react-router-dom';
 
 function Login({newUserState, isLoggedInState}) {
+  const dispatch=useDispatch();
+  const {logging,loggingSuccess,loggingError,loggingData}=useSelector((state)=>state.loginState);
 
   /* const[userName,setUserName]=React.useState("");
   const[password,setPassword]=React.useState(""); */
@@ -47,7 +49,7 @@ function Login({newUserState, isLoggedInState}) {
      const jsonDataString =JSON.stringify(jsonData);
       console.log("JSON DATA STRING:",jsonDataString);
       //API CALL
-       fetch(api_url,{
+      /*  fetch(api_url,{
         method:"POST",
         headers:{
           "Content-Type":"application/json"
@@ -65,9 +67,16 @@ function Login({newUserState, isLoggedInState}) {
       })
       .catch((error)=>{
         console.error("Error while calling API:",error);
-      })
-        
-    } 
+      }) */
+     dispatch(loginRequest(jsonData));
+     console.log("Logging Success Value:",loggingSuccess);
+    
+      setOpen(true);
+      setShowAlert(true);
+      isLoggedInState(true);
+      navigate("/dashboard/home"); //same as history.push api
+     }
+    
    
   })
    

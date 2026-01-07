@@ -18,6 +18,19 @@ export default defineConfig({
   },
   build:{
     rollupOptions:"home.html"
-  }
+  },
+   test: {
+    environment: "jsdom",
+    globals: true,
+    setupFiles: "./src/setupTests.js",
+    clearMocks: true,
+    restoreMocks: true,
+    mockReset: true,
+    coverage: {
+      provider: "v8",
+      reporter: ["text", "html", "lcov"], // ✅ reports
+      reportsDirectory: "./coverage",
+    },
+  },
   
 })

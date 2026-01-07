@@ -15,6 +15,7 @@ export const addProductRequest = (newProduct)=>async(dispatch)=>{
             throw new Error('Failed to add product');
         }
         const data = await res.json();
+        console.log('Product added successfully:', data);
         dispatch({type: ADD_PRODUCT_SUCCESS, payload: data});
 
     }catch(error){

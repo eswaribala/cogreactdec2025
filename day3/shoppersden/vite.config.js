@@ -24,7 +24,12 @@ export default defineConfig({
     setupFiles:["./src/setupTests.js"],
     clearMocks:true,
     restoreMocks:true,
-    mockReset:true
+    mockReset:true,
+     coverage: {
+      provider: "v8",
+      reporter: ["text", "html", "lcov"], //
+      reportsDirectory: "./coverage",
+    },
   }
   
 })

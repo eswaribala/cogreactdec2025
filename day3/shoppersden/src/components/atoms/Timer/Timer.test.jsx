@@ -1,4 +1,4 @@
-import {render,screen} from '@testing-library/react';
+import {render,screen,act} from '@testing-library/react';
 import {describe, it, expect, vi, beforeEach, afterEach} from 'vitest';
 import Timer from './Timer';
 describe('Timer Component', () => {
@@ -14,5 +14,17 @@ describe('Timer Component', () => {
     it('renders the currret time correctly', () => {              
         render(<Timer />);        
         expect(screen.getByRole('heading')).toBeInTheDocument();
+    });
+    
+
+    it('updates the time every second', () => {              
+        render(<Timer />);        
+       const initialTime = screen.getByRole('heading').textContent;
+
+       act(() => {
+        vi.advanceTimersByTime(1000); // Advance time by 1 second
+       });
+         const updatedTime = screen.getByRole('heading').textContent;
+         expect(initialTime).not.toBe(updatedTime);
     });
 });

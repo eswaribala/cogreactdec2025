@@ -18,6 +18,13 @@ export default defineConfig({
   },
   build:{
     rollupOptions:"home.html"
+  },
+  test:{
+    environment:"jsdom",
+    setupFiles:["./src/setupTests.js"],
+    clearMocks:true,
+    restoreMocks:true,
+    mockReset:true
   }
   
 })

@@ -127,7 +127,7 @@ function Registration({newUserState}) {
       }} />
         
        
-       <TextField fullWidth variant='outlined' label="lastName" name="lastName" 
+       <TextField fullWidth variant='outlined' label="LastName" name="lastName" 
          sx={{padding:"10px"}} values={formik.values.lastName} onChange={formik.handleChange} 
           error={formik.touched.lastName && Boolean(formik.errors.lastName)} 
          helperText={formik.touched.lastName &&formik.errors.lastName}
@@ -142,7 +142,7 @@ function Registration({newUserState}) {
   }} />
 
   
-       <TextField fullWidth variant='outlined' label="userName" name="userName" 
+       <TextField fullWidth variant='outlined' label="UserName" name="userName" 
          sx={{padding:"10px"}} values={formik.values.userName} onChange={formik.handleChange} 
           error={formik.touched.userName && Boolean(formik.errors.userName)} 
          helperText={formik.touched.userName &&formik.errors.userName}
@@ -156,7 +156,7 @@ function Registration({newUserState}) {
     }
   }} />
   
-       <TextField fullWidth variant='outlined' label="password" name="password" type="password"
+       <TextField fullWidth variant='outlined' label="Password" name="password" type="password"
          sx={{padding:"10px"}} values={formik.values.password} onChange={formik.handleChange} 
           error={formik.touched.password && Boolean(formik.errors.password)} 
          helperText={formik.touched.password &&formik.errors.password}
@@ -169,7 +169,7 @@ function Registration({newUserState}) {
       )
     }
   }} />
-<TextField fullWidth variant='outlined' label="confirmPassword" name="confirmPassword" type="password"
+<TextField fullWidth variant='outlined' label="ConfirmPassword" name="confirmPassword" type="password"
          sx={{padding:"10px"}} values={formik.values.confirmPassword} onChange={formik.handleChange} 
           error={formik.touched.confirmPassword && Boolean(formik.errors.confirmPassword)} 
          helperText={formik.touched.confirmPassword &&formik.errors.confirmPassword}
@@ -184,7 +184,7 @@ function Registration({newUserState}) {
   }} />
 
 
-  <TextField fullWidth variant='outlined' label="email" name="email" 
+  <TextField fullWidth variant='outlined' label="Email" name="email" 
          sx={{padding:"10px"}} values={formik.values.email} onChange={formik.handleChange} 
           error={formik.touched.email && Boolean(formik.errors.email)} 
          helperText={formik.touched.email &&formik.errors.email}
@@ -199,7 +199,7 @@ function Registration({newUserState}) {
   }} />
        
   
-       <TextField fullWidth variant='outlined' label="dob" name="dob" type="date"
+       <TextField fullWidth variant='outlined' label="Dob" name="dob" type="date"
          sx={{padding:"10px"}} values={formik.values.dob} onChange={formik.handleChange} 
           error={formik.touched.dob && Boolean(formik.errors.dob)} 
          helperText={formik.touched.dob &&formik.errors.dob}
@@ -213,7 +213,7 @@ function Registration({newUserState}) {
     }
   }} />
   
-       <TextField fullWidth variant='outlined' label="mobileNo" name="mobileNo" 
+       <TextField fullWidth variant='outlined' label="MobileNo" name="mobileNo" 
          sx={{padding:"10px"}} values={formik.values.mobileNo} onChange={formik.handleChange} 
           error={formik.touched.mobileNo && Boolean(formik.errors.mobileNo)} 
          helperText={formik.touched.mobileNo &&formik.errors.mobileNo}

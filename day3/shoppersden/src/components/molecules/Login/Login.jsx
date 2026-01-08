@@ -80,7 +80,9 @@ const {login}=useAuth();
       isLoggedInState(true);
       const token=localStorage.getItem("authToken");
       login(token);
-      navigate("/dashboard/home"); //same as history.push api
+      if(token){
+      navigate("/dashboard/home");
+      } //same as history.push api
      }
     
    

@@ -27,4 +27,11 @@ describe('Timer Component', () => {
          const updatedTime = screen.getByRole('heading').textContent;
          expect(initialTime).not.toBe(updatedTime);
     });
+
+    it('cleans up the interval on unmount', () => { 
+        const clearIntervalSpy = vi.spyOn(global, 'clearInterval');
+        const { unmount } = render(<Timer />);
+        unmount();
+        expect(clearIntervalSpy).toHaveBeenCalled();
+    });
 });

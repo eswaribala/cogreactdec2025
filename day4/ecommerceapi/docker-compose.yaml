@@ -1,0 +1,14 @@
+services:
+  api:
+    build: .
+    container_name: ecommerce-api
+    ports:
+      - "4000:4000"   # host:container
+    environment:
+      NODE_ENV: production
+      PORT: 4000
+    restart: unless-stopped
+networks:
+  default:
+    external:
+      name: cognizantnetwork

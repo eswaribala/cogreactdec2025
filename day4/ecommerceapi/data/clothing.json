@@ -1,0 +1,61 @@
+{
+  "count": 50,
+  "data": [
+    { "id": 1, "name": "Men Cotton T-Shirt", "category": "Men", "price": 499 },
+    { "id": 2, "name": "Men Polo T-Shirt", "category": "Men", "price": 699 },
+    { "id": 3, "name": "Men Casual Shirt", "category": "Men", "price": 1199 },
+    { "id": 4, "name": "Men Formal Shirt", "category": "Men", "price": 1499 },
+    { "id": 5, "name": "Men Jeans", "category": "Men", "price": 1999 },
+    { "id": 6, "name": "Men Chinos", "category": "Men", "price": 1799 },
+    { "id": 7, "name": "Men Shorts", "category": "Men", "price": 899 },
+    { "id": 8, "name": "Men Track Pants", "category": "Men", "price": 1299 },
+    { "id": 9, "name": "Men Hoodie", "category": "Men", "price": 2199 },
+    { "id": 10, "name": "Men Jacket", "category": "Men", "price": 2999 },
+
+    { "id": 11, "name": "Women Cotton Top", "category": "Women", "price": 599 },
+    { "id": 12, "name": "Women Kurti", "category": "Women", "price": 1499 },
+    { "id": 13, "name": "Women Jeans", "category": "Women", "price": 1899 },
+    { "id": 14, "name": "Women Leggings", "category": "Women", "price": 799 },
+    { "id": 15, "name": "Women Palazzo Pants", "category": "Women", "price": 1299 },
+    { "id": 16, "name": "Women Saree", "category": "Women", "price": 2999 },
+    { "id": 17, "name": "Women Anarkali Dress", "category": "Women", "price": 3499 },
+    { "id": 18, "name": "Women Jacket", "category": "Women", "price": 2799 },
+    { "id": 19, "name": "Women Night Suit", "category": "Women", "price": 1599 },
+    { "id": 20, "name": "Women Sweater", "category": "Women", "price": 1999 },
+
+    { "id": 21, "name": "Kids T-Shirt", "category": "Kids", "price": 399 },
+    { "id": 22, "name": "Kids Jeans", "category": "Kids", "price": 799 },
+    { "id": 23, "name": "Kids Shorts", "category": "Kids", "price": 499 },
+    { "id": 24, "name": "Kids Jacket", "category": "Kids", "price": 1499 },
+    { "id": 25, "name": "Kids Hoodie", "category": "Kids", "price": 1299 },
+    { "id": 26, "name": "Kids Party Dress", "category": "Kids", "price": 1899 },
+    { "id": 27, "name": "Kids Night Wear", "category": "Kids", "price": 899 },
+    { "id": 28, "name": "Kids Track Pants", "category": "Kids", "price": 699 },
+    { "id": 29, "name": "Kids Sweatshirt", "category": "Kids", "price": 999 },
+    { "id": 30, "name": "Kids Ethnic Wear", "category": "Kids", "price": 2199 },
+
+    { "id": 31, "name": "Unisex Rain Jacket", "category": "Unisex", "price": 2499 },
+    { "id": 32, "name": "Unisex Sweatshirt", "category": "Unisex", "price": 1799 },
+    { "id": 33, "name": "Unisex Track Suit", "category": "Unisex", "price": 2999 },
+    { "id": 34, "name": "Unisex Lounge Pants", "category": "Unisex", "price": 1399 },
+    { "id": 35, "name": "Unisex Hoodie", "category": "Unisex", "price": 2199 },
+
+    { "id": 36, "name": "Formal Blazer", "category": "Formal", "price": 4999 },
+    { "id": 37, "name": "Formal Trousers", "category": "Formal", "price": 1999 },
+    { "id": 38, "name": "Formal Skirt", "category": "Formal", "price": 1799 },
+    { "id": 39, "name": "Formal Shirt", "category": "Formal", "price": 1599 },
+    { "id": 40, "name": "Formal Waistcoat", "category": "Formal", "price": 2999 },
+
+    { "id": 41, "name": "Winter Coat", "category": "Winter Wear", "price": 5999 },
+    { "id": 42, "name": "Thermal Top", "category": "Winter Wear", "price": 999 },
+    { "id": 43, "name": "Thermal Bottom", "category": "Winter Wear", "price": 999 },
+    { "id": 44, "name": "Woolen Sweater", "category": "Winter Wear", "price": 2499 },
+    { "id": 45, "name": "Woolen Scarf", "category": "Winter Wear", "price": 699 },
+
+    { "id": 46, "name": "Sports T-Shirt", "category": "Active Wear", "price": 799 },
+    { "id": 47, "name": "Yoga Pants", "category": "Active Wear", "price": 1299 },
+    { "id": 48, "name": "Gym Shorts", "category": "Active Wear", "price": 899 },
+    { "id": 49, "name": "Running Jacket", "category": "Active Wear", "price": 2199 },
+    { "id": 50, "name": "Track Jacket", "category": "Active Wear", "price": 2599 }
+  ]
+}

@@ -1,0 +1,61 @@
+[
+  { "id": 1, "name": "Cricket Bat", "category": "Cricket", "price": 1299 },
+  { "id": 2, "name": "Cricket Ball", "category": "Cricket", "price": 199 },
+  { "id": 3, "name": "Batting Gloves", "category": "Cricket", "price": 599 },
+  { "id": 4, "name": "Cricket Helmet", "category": "Cricket", "price": 2499 },
+  { "id": 5, "name": "Wicket Keeping Pads", "category": "Cricket", "price": 1799 },
+
+  { "id": 6, "name": "Football", "category": "Football", "price": 999 },
+  { "id": 7, "name": "Football Studs", "category": "Football", "price": 2999 },
+  { "id": 8, "name": "Goalkeeper Gloves", "category": "Football", "price": 1499 },
+  { "id": 9, "name": "Shin Guards", "category": "Football", "price": 799 },
+  { "id": 10, "name": "Football Jersey", "category": "Football", "price": 1199 },
+
+  { "id": 11, "name": "Badminton Racket", "category": "Badminton", "price": 1899 },
+  { "id": 12, "name": "Shuttlecock Pack", "category": "Badminton", "price": 499 },
+  { "id": 13, "name": "Badminton Shoes", "category": "Badminton", "price": 2799 },
+  { "id": 14, "name": "Badminton Net", "category": "Badminton", "price": 899 },
+  { "id": 15, "name": "Grip Tape", "category": "Badminton", "price": 199 },
+
+  { "id": 16, "name": "Tennis Racket", "category": "Tennis", "price": 3499 },
+  { "id": 17, "name": "Tennis Balls Pack", "category": "Tennis", "price": 599 },
+  { "id": 18, "name": "Tennis Shoes", "category": "Tennis", "price": 3299 },
+  { "id": 19, "name": "Wrist Band", "category": "Tennis", "price": 299 },
+  { "id": 20, "name": "Tennis Net", "category": "Tennis", "price": 1599 },
+
+  { "id": 21, "name": "Basketball", "category": "Basketball", "price": 1199 },
+  { "id": 22, "name": "Basketball Hoop", "category": "Basketball", "price": 4999 },
+  { "id": 23, "name": "Basketball Shoes", "category": "Basketball", "price": 3899 },
+  { "id": 24, "name": "Arm Sleeve", "category": "Basketball", "price": 399 },
+  { "id": 25, "name": "Basketball Jersey", "category": "Basketball", "price": 1299 },
+
+  { "id": 26, "name": "Gym Dumbbells Set", "category": "Fitness", "price": 2599 },
+  { "id": 27, "name": "Yoga Mat", "category": "Fitness", "price": 899 },
+  { "id": 28, "name": "Resistance Bands", "category": "Fitness", "price": 699 },
+  { "id": 29, "name": "Skipping Rope", "category": "Fitness", "price": 299 },
+  { "id": 30, "name": "Kettlebell", "category": "Fitness", "price": 2199 },
+
+  { "id": 31, "name": "Table Tennis Bat", "category": "Table Tennis", "price": 999 },
+  { "id": 32, "name": "Table Tennis Balls", "category": "Table Tennis", "price": 299 },
+  { "id": 33, "name": "Table Tennis Net", "category": "Table Tennis", "price": 799 },
+  { "id": 34, "name": "Table Tennis Table", "category": "Table Tennis", "price": 12999 },
+  { "id": 35, "name": "Table Tennis Shoes", "category": "Table Tennis", "price": 2499 },
+
+  { "id": 36, "name": "Hockey Stick", "category": "Hockey", "price": 2199 },
+  { "id": 37, "name": "Hockey Ball", "category": "Hockey", "price": 199 },
+  { "id": 38, "name": "Hockey Gloves", "category": "Hockey", "price": 999 },
+  { "id": 39, "name": "Hockey Shin Pads", "category": "Hockey", "price": 1299 },
+  { "id": 40, "name": "Hockey Helmet", "category": "Hockey", "price": 2999 },
+
+  { "id": 41, "name": "Swimming Goggles", "category": "Swimming", "price": 499 },
+  { "id": 42, "name": "Swimming Cap", "category": "Swimming", "price": 199 },
+  { "id": 43, "name": "Swim Fins", "category": "Swimming", "price": 1899 },
+  { "id": 44, "name": "Kickboard", "category": "Swimming", "price": 999 },
+  { "id": 45, "name": "Swim Bag", "category": "Swimming", "price": 1499 },
+
+  { "id": 46, "name": "Cycling Helmet", "category": "Cycling", "price": 2499 },
+  { "id": 47, "name": "Cycling Gloves", "category": "Cycling", "price": 799 },
+  { "id": 48, "name": "Water Bottle", "category": "Cycling", "price": 399 },
+  { "id": 49, "name": "Bike Lock", "category": "Cycling", "price": 899 },
+  { "id": 50, "name": "Bike Pump", "category": "Cycling", "price": 699 }
+]

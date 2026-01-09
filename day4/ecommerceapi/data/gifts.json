@@ -1,0 +1,61 @@
+[
+  { "id": 1, "name": "Teddy Bear", "category": "Soft Toys", "price": 899, "image": "https://picsum.photos/seed/gift1/200" },
+  { "id": 2, "name": "Chocolate Box", "category": "Chocolates", "price": 499, "image": "https://picsum.photos/seed/gift2/200" },
+  { "id": 3, "name": "Flower Bouquet", "category": "Flowers", "price": 699, "image": "https://picsum.photos/seed/gift3/200" },
+  { "id": 4, "name": "Greeting Card", "category": "Cards", "price": 199, "image": "https://picsum.photos/seed/gift4/200" },
+  { "id": 5, "name": "Perfume", "category": "Accessories", "price": 1499, "image": "https://picsum.photos/seed/gift5/200" },
+
+  { "id": 6, "name": "Coffee Mug", "category": "Personalized", "price": 349, "image": "https://picsum.photos/seed/gift6/200" },
+  { "id": 7, "name": "Key Chain", "category": "Accessories", "price": 149, "image": "https://picsum.photos/seed/gift7/200" },
+  { "id": 8, "name": "Photo Frame", "category": "Home Decor", "price": 599, "image": "https://picsum.photos/seed/gift8/200" },
+  { "id": 9, "name": "Wall Clock", "category": "Home Decor", "price": 999, "image": "https://picsum.photos/seed/gift9/200" },
+  { "id": 10, "name": "Lamp", "category": "Home Decor", "price": 1299, "image": "https://picsum.photos/seed/gift10/200" },
+
+  { "id": 11, "name": "Wallet", "category": "Accessories", "price": 799, "image": "https://picsum.photos/seed/gift11/200" },
+  { "id": 12, "name": "Watch", "category": "Accessories", "price": 2499, "image": "https://picsum.photos/seed/gift12/200" },
+  { "id": 13, "name": "Sunglasses", "category": "Accessories", "price": 1599, "image": "https://picsum.photos/seed/gift13/200" },
+  { "id": 14, "name": "Bluetooth Speaker", "category": "Electronics", "price": 1999, "image": "https://picsum.photos/seed/gift14/200" },
+  { "id": 15, "name": "Headphones", "category": "Electronics", "price": 2999, "image": "https://picsum.photos/seed/gift15/200" },
+
+  { "id": 16, "name": "Diary", "category": "Stationery", "price": 299, "image": "https://picsum.photos/seed/gift16/200" },
+  { "id": 17, "name": "Pen Set", "category": "Stationery", "price": 399, "image": "https://picsum.photos/seed/gift17/200" },
+  { "id": 18, "name": "Notebook", "category": "Stationery", "price": 199, "image": "https://picsum.photos/seed/gift18/200" },
+  { "id": 19, "name": "Desk Organizer", "category": "Office", "price": 599, "image": "https://picsum.photos/seed/gift19/200" },
+  { "id": 20, "name": "Laptop Bag", "category": "Office", "price": 1799, "image": "https://picsum.photos/seed/gift20/200" },
+
+  { "id": 21, "name": "Travel Mug", "category": "Travel", "price": 499, "image": "https://picsum.photos/seed/gift21/200" },
+  { "id": 22, "name": "Backpack", "category": "Travel", "price": 1999, "image": "https://picsum.photos/seed/gift22/200" },
+  { "id": 23, "name": "Passport Holder", "category": "Travel", "price": 349, "image": "https://picsum.photos/seed/gift23/200" },
+  { "id": 24, "name": "Water Bottle", "category": "Fitness", "price": 399, "image": "https://picsum.photos/seed/gift24/200" },
+  { "id": 25, "name": "Yoga Mat", "category": "Fitness", "price": 999, "image": "https://picsum.photos/seed/gift25/200" },
+
+  { "id": 26, "name": "Skipping Rope", "category": "Fitness", "price": 299, "image": "https://picsum.photos/seed/gift26/200" },
+  { "id": 27, "name": "Plant Pot", "category": "Gardening", "price": 499, "image": "https://picsum.photos/seed/gift27/200" },
+  { "id": 28, "name": "Indoor Plant", "category": "Gardening", "price": 899, "image": "https://picsum.photos/seed/gift28/200" },
+  { "id": 29, "name": "Candle Set", "category": "Decor", "price": 699, "image": "https://picsum.photos/seed/gift29/200" },
+  { "id": 30, "name": "Aroma Diffuser", "category": "Decor", "price": 1299, "image": "https://picsum.photos/seed/gift30/200" },
+
+  { "id": 31, "name": "Photo Album", "category": "Memories", "price": 799, "image": "https://picsum.photos/seed/gift31/200" },
+  { "id": 32, "name": "Custom Cushion", "category": "Personalized", "price": 999, "image": "https://picsum.photos/seed/gift32/200" },
+  { "id": 33, "name": "Custom T-Shirt", "category": "Personalized", "price": 799, "image": "https://picsum.photos/seed/gift33/200" },
+  { "id": 34, "name": "Puzzle Game", "category": "Toys", "price": 599, "image": "https://picsum.photos/seed/gift34/200" },
+  { "id": 35, "name": "Board Game", "category": "Toys", "price": 1499, "image": "https://picsum.photos/seed/gift35/200" },
+
+  { "id": 36, "name": "Toy Car", "category": "Toys", "price": 399, "image": "https://picsum.photos/seed/gift36/200" },
+  { "id": 37, "name": "Kids Story Book", "category": "Books", "price": 299, "image": "https://picsum.photos/seed/gift37/200" },
+  { "id": 38, "name": "Novel", "category": "Books", "price": 499, "image": "https://picsum.photos/seed/gift38/200" },
+  { "id": 39, "name": "Cookbook", "category": "Books", "price": 699, "image": "https://picsum.photos/seed/gift39/200" },
+  { "id": 40, "name": "Music Box", "category": "Decor", "price": 999, "image": "https://picsum.photos/seed/gift40/200" },
+
+  { "id": 41, "name": "Handbag", "category": "Fashion", "price": 2499, "image": "https://picsum.photos/seed/gift41/200" },
+  { "id": 42, "name": "Scarf", "category": "Fashion", "price": 799, "image": "https://picsum.photos/seed/gift42/200" },
+  { "id": 43, "name": "Cap", "category": "Fashion", "price": 499, "image": "https://picsum.photos/seed/gift43/200" },
+  { "id": 44, "name": "Bracelet", "category": "Jewellery", "price": 1299, "image": "https://picsum.photos/seed/gift44/200" },
+  { "id": 45, "name": "Necklace", "category": "Jewellery", "price": 2999, "image": "https://picsum.photos/seed/gift45/200" },
+
+  { "id": 46, "name": "Ring", "category": "Jewellery", "price": 1999, "image": "https://picsum.photos/seed/gift46/200" },
+  { "id": 47, "name": "Earrings", "category": "Jewellery", "price": 1499, "image": "https://picsum.photos/seed/gift47/200" },
+  { "id": 48, "name": "Mobile Stand", "category": "Accessories", "price": 299, "image": "https://picsum.photos/seed/gift48/200" },
+  { "id": 49, "name": "Power Bank", "category": "Electronics", "price": 1999, "image": "https://picsum.photos/seed/gift49/200" },
+  { "id": 50, "name": "USB Lamp", "category": "Electronics", "price": 599, "image": "https://picsum.photos/seed/gift50/200" }
+]

@@ -38,6 +38,9 @@ describe("Gifts - API + Response (Vitest)", () => {
     expect(mockApiData.length).toBe(6);
     const headings=await screen.findAllByRole("heading", { level: 6 });
     expect(headings).toHaveLength(5); // 6 items per page
+    expect(screen.queryByText("Gift 1")).toBeInTheDocument();
+    expect(screen.queryByText("Gift 5")).toBeInTheDocument();
+    expect(screen.queryByText("Gift 6")).not.toBeInTheDocument();
 
     
   });

@@ -30,14 +30,19 @@ describe("Gifts - API + Response (Vitest)", () => {
     vi.clearAllMocks();
   });
 
-  test("calls API, validates response size, renders 5 items on page 1", async () => {
+  test("calls API, validates response size, renders 6 items on page 1", async () => {
     render(<Gifts apiUrl={import.meta.env.VITE_GIFT_ENDPOINT} />);
 
    await waitFor(() => expect(axios.get).toHaveBeenCalledTimes(1));
-    expect(axios.get).toHaveBeenCalledWith(import.meta.env.VITE_GIFT_ENDPOINT);
+    expect(axios.get).toHaveBeenCalledWith(import.meta.env.VITE_GIFT_ENDPOINT);  
+    expect(mockApiData.length).toBe(6);
+    const headings=await screen.findAllByRole("heading", { level: 6 });
+    expect(headings).toHaveLength(5); // 6 items per page
 
     
   });
+
+
 });
 
  

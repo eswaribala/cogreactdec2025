@@ -33,7 +33,19 @@ describe('Books Component',()=>{
         await waitFor(()=>{
           expect(global.fetch).toHaveBeenCalledWith(`${import.meta.env.VITE_BOOKS_BASEURL}?page=1&limit=4`);    
         }
+
     );
+    expect(mockBooksData).toHaveLength(8);
+    const headings=await screen.findAllByRole("heading", { level: 6 });
+    expect(headings).toHaveLength(8); // 4 items per page
+    expect(screen.queryByText("Book Title 1")).toBeInTheDocument();
+    expect(screen.queryByText("Book Title 4")).toBeInTheDocument();
+    expect(screen.queryByText("Book Title 5")).toBeInTheDocument();
+    expect(screen.queryByText("Book Title 9")).not.toBeInTheDocument();
+    
+       
+  
+
 });
 });
 

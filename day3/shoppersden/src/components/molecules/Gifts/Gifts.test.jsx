@@ -34,7 +34,7 @@ describe("Gifts - API + Response (Vitest)", () => {
     render(<Gifts apiUrl={import.meta.env.VITE_GIFT_ENDPOINT} />);
 
    await waitFor(() => expect(axios.get).toHaveBeenCalledTimes(1));
-    //expect(fetch).toHaveBeenCalledWith(import.meta.env.VITE_GIFT_ENDPOINT);
+    expect(axios.get).toHaveBeenCalledWith(import.meta.env.VITE_GIFT_ENDPOINT);
 
     
   });

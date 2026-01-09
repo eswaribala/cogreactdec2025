@@ -3,6 +3,13 @@ import { render, screen, waitFor,within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { describe, test, expect, beforeEach, afterEach, vi } from "vitest";
 import Gifts from "./Gifts";
+import axios from "axios";
+
+vi.mock("axios", () => ({
+  default: {
+    get: vi.fn(),
+  },
+}));
 
 const mockApiData = Array.from({ length: 6 }).map((_, i) => ({
   id: i + 1,
@@ -14,8 +21,8 @@ const mockApiData = Array.from({ length: 6 }).map((_, i) => ({
 
 describe("Gifts - API + Response (Vitest)", () => {
   beforeEach(() => {
-    global.fetch = vi.fn().mockResolvedValue({
-      json: vi.fn().mockResolvedValue({ data: mockApiData }),
+   axios.get.mockResolvedValue({
+        data: { data: mockApiData }
     });
   });
 
@@ -26,7 +33,7 @@ describe("Gifts - API + Response (Vitest)", () => {
   test("calls API, validates response size, renders 5 items on page 1", async () => {
     render(<Gifts apiUrl={import.meta.env.VITE_GIFT_ENDPOINT} />);
 
-   await waitFor(() => expect(fetch).toHaveBeenCalledTimes(0));
+   await waitFor(() => expect(axios.get).toHaveBeenCalledTimes(1));
     //expect(fetch).toHaveBeenCalledWith(import.meta.env.VITE_GIFT_ENDPOINT);
 
     

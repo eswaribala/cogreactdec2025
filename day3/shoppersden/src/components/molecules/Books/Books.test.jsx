@@ -3,6 +3,7 @@ import{render,screen,waitFor,within} from '@testing-library/react';
 import Books from './Books.jsx';
 import userEvent from '@testing-library/user-event';
 import {describe,test,expect,beforeEach,afterEach,vi} from 'vitest';
+import { MemoryRouter } from 'react-router-dom';
 
 const mockBooksData=Array.from({length:8}).map((_,i)=>({
   id:`book-${i+1}`,
@@ -28,7 +29,7 @@ describe('Books Component',()=>{
   });
 
     test('calls api',async()=>{
-        render(<Books apiUrl={import.meta.env.VITE_BOOKS_BASEURL}/>);
+        render(<MemoryRouter><Books apiUrl={import.meta.env.VITE_BOOKS_BASEURL}/></MemoryRouter>);
         await waitFor(()=>{
           expect(global.fetch).toHaveBeenCalledWith(`${import.meta.env.VITE_BOOKS_BASEURL}?page=1&limit=4`);    
         }

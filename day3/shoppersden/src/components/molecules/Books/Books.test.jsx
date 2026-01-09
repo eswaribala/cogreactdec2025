@@ -37,7 +37,7 @@ describe('Books Component',()=>{
     );
     expect(mockBooksData).toHaveLength(8);
     const headings=await screen.findAllByRole("heading", { level: 6 });
-    expect(headings).toHaveLength(8); // 4 items per page
+    expect(headings).toHaveLength(8); // 8 items per page
     expect(screen.queryByText("Book Title 1")).toBeInTheDocument();
     expect(screen.queryByText("Book Title 4")).toBeInTheDocument();
     expect(screen.queryByText("Book Title 5")).toBeInTheDocument();

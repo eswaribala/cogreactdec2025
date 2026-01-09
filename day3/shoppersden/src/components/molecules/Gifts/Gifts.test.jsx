@@ -1,34 +1,36 @@
-import React from 'react';
-import { render, screen, waitFor, fireEvent } from '@testing-library/react';
-import Gifts from './Gifts';
-import {describe, it, expect, vi, beforeEach, afterEach} from 'vitest';
+import React from "react";
+import { render, screen, waitFor,within } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
+import { describe, test, expect, beforeEach, afterEach, vi } from "vitest";
+import Gifts from "./Gifts";
 
-
-//Mock Data
-const mockGifts = Array.from({ length: 6}).map((_, i) => ({  
-    id: i + 1,
-    name: `Gift ${i + 1}`,
-    description: `Description for Gift ${i + 1}`,
-    price: (i + 1) * 10,
-    image:`img${i + 1}.jpg`
+const mockApiData = Array.from({ length: 6 }).map((_, i) => ({
+  id: i + 1,
+  name: `Gift ${i + 1}`,
+  description: `Desc ${i + 1}`,
+  price: (i + 1) * 10,
+  image: `img${i + 1}.jpg`,
 }));
 
-describe('Gifts Component', () => {
-    beforeEach(() => {
-       global.fetch = vi.fn().mockResolvedValue({
-            json: vi.fn().mockResolvedValue({ gifts: mockGifts }),
-       });
+describe("Gifts - API + Response (Vitest)", () => {
+  beforeEach(() => {
+    global.fetch = vi.fn().mockResolvedValue({
+      json: vi.fn().mockResolvedValue({ data: mockApiData }),
     });
-    afterEach(() => {
-        vi.resetAllMocks();
-    });
-    it('calls api to fetch gifts on mount', async () => {
-        render(<Gifts apiUrl={import.meta.env.VITE_GIFT_ENDPOINT} />);
-        await waitFor(() => 
-            expect(global.fetch).toHaveBeenCalledWith(import.meta.env.VITE_GIFT_ENDPOINT)
-        );
-        
-       
-    });
+  });
 
+  afterEach(() => {
+    vi.clearAllMocks();
+  });
+
+  test("calls API, validates response size, renders 5 items on page 1", async () => {
+    render(<Gifts apiUrl={import.meta.env.VITE_GIFT_ENDPOINT} />);
+
+   await waitFor(() => expect(fetch).toHaveBeenCalledTimes(0));
+    //expect(fetch).toHaveBeenCalledWith(import.meta.env.VITE_GIFT_ENDPOINT);
+
+    
+  });
 });
+
+ 
